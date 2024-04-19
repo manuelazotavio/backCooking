@@ -15,7 +15,7 @@ const getById = async (id) => {
     })
 }
 
-const create = async (user) => {
+const create = async (receita) => {
     return await prisma.receita.create({
         data: receita
     })
@@ -29,12 +29,12 @@ const remove = async (id) => {
     })
 }
 
-const edit = async (user) => {
+const edit = async (receita) => {
     return await prisma.receita.update({
         where: {
             id: receita.id
         },
-        data: user
+        data: receita
     })
 }
 
