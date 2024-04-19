@@ -1,4 +1,4 @@
-import receitaModel from "../../models/userModel.js"
+import receitaModel from "../../models/receitaModel.js"
 
 const create = async(req, res) => {
     try{
