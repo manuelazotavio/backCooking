@@ -1,6 +1,6 @@
 import receitaModel from "../../models/receitaModel.js"
 
-const create = async(req, res) => {
+const criar = async(req, res) => {
     try{
         const receita = req.body
         const newReceita = receitaModel.create(receita)
@@ -17,4 +17,4 @@ const create = async(req, res) => {
 }
 
 
-export default create
+export default criar

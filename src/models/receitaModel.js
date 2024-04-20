@@ -39,4 +39,4 @@ const edit = async (receita) => {
 }
 
 
-export default {getAll, getById, create, remove, edit, validateUserToCreate}
+export default {getAll, getById, create, remove, edit}
