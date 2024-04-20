@@ -1,6 +1,6 @@
 
 import express from 'express'
-import {PORT, HOST} from '../config.js'
+import {PORT, HOST} from '../src/config.js'
 import userRouter from './routers/userRouter.js'
 import receitaRouter from './routers/receitaRouter.js'
 import logger from './middlewares/logger.js'
