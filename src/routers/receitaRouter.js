@@ -1,5 +1,6 @@
 import express from 'express'
 import criar from '../controllers/receita/criar.js'
+import getAll from '../controllers/receita/getAll.js'
 
 const router = express.Router()
 
