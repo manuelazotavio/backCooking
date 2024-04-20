@@ -2,10 +2,10 @@ import receitaModel from "../../models/receitaModel.js"
 
 const getAll = async(req, res) => {
     try{
-        const receita = receitaModel.getAll
+        const receita = receitaModel.getAll()
         return res.json({
             success: 'Receitas listadas com sucesso!',
-            receita
+            receita: receita
         })
     } catch (error) {
         console.log(error)
