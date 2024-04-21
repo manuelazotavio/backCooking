@@ -1,11 +1,12 @@
 import receitaModel from "../../models/receitaModel"
 
-const criar = async(req, res) => {
+const edit = async(req, res) => {
     try{
+        const id = req.params
         const receita = req.body
-        const newReceita = await receitaModel.create(receita)
+        const newReceita = await receitaModel.edit(receita, id)
         return res.json({
-            success: 'Receita fabricada com sucesso!',
+            success: 'Receita editada com sucesso!',
             receita: newReceita
         })
         
@@ -18,4 +19,4 @@ const criar = async(req, res) => {
 }
 
 
-export default criar
+export default edit
