@@ -1,6 +1,6 @@
 import receitaModel from "../../models/receitaModel.js"
 
-const getAll = async(req, res) => {
+const listar = async(req, res) => {
     try{
         const receita = await receitaModel.getAll()
         return res.json({
@@ -16,4 +16,4 @@ const getAll = async(req, res) => {
 }
 
 
-export default getAll
+export default listar
