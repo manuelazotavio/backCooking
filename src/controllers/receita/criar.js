@@ -1,13 +1,14 @@
-import receitaModel from "../../models/receitaModel.js"
+import receitaModel from "../../models/receitaModel"
 
-const criar = async(req, res) => {
+const create = async(req, res) => {
     try{
         const receita = req.body
-        const newReceita = receitaModel.create(receita)
+        const newReceita = await receitaModel.create(receita)
         return res.json({
             success: 'Receita fabricada com sucesso!',
             receita: newReceita
         })
+        
     } catch (error) {
         console.log(error)
         return res.status(500).json({
@@ -17,4 +18,4 @@ const criar = async(req, res) => {
 }
 
 
-export default criar
+export default create
