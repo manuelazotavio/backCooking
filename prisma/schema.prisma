@@ -11,11 +11,11 @@ model receita {
   id       Int    @id @default(autoincrement())
   name     String @db.VarChar(250)
   avaliacao Int
+  porcoes String 
+  descricao String
   tempo String @db.VarChar(50)
-  caloria String @db.VarChar(250)
   instrucao String @db.VarChar(400)
   ingredientes String @db.VarChar(250)
-
 }
 
 model user {
