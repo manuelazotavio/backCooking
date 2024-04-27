@@ -10,7 +10,7 @@ datasource db {
 model receita {
   id       Int    @id @default(autoincrement())
   name     String @db.VarChar(250)
-  avaliacao Int
+  avaliacao String
   porcoes String 
   descricao String
   tempo String @db.VarChar(50)
