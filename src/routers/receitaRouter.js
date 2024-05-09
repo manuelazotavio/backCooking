@@ -2,6 +2,7 @@ import express from 'express'
 import criar from '../controllers/receita/criar.js'
 import listar from '../controllers/receita/listar.js'
 import edit from '../controllers/receita/editar.js'
+import remove from '../controllers/receita/remove.js'
 
 const router = express.Router()
 
