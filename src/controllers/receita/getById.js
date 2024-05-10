@@ -1,4 +1,4 @@
-import receitaModel from "../../models/receitaModel"
+import receitaModel from "../../models/receitaModel.js"
 
 const getById = async (req, res) => {
     try{
