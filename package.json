@@ -10,6 +10,15 @@
     "pull": "npx prisma db pull",
     "push": "npx prisma db push"
   },
+  "keywords": [
+    "js",
+    "node",
+    "express",
+    "zod",
+    "api",
+    "jwt",
+    "mvc"
+  ],
   "type": "module",
   "author": "",
   "license": "ISC",
