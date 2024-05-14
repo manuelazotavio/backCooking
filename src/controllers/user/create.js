@@ -1,6 +1,7 @@
 
 import userModel from "../../models/userModel.js"
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
+
 import bcrypt from 'bcrypt'
 
 const create = async (req, res) => {
