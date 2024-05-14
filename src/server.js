@@ -3,8 +3,10 @@ import express from 'express'
 import {PORT, HOST} from '../src/config.js'
 import userRouter from './routers/userRouter.js'
 import receitaRouter from './routers/receitaRouter.js'
+import authRouter from './routers/authRouter.js'
 import logger from './middlewares/logger.js'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 
 
 const app = express()
