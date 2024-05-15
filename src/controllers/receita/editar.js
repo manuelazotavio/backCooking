@@ -2,9 +2,9 @@ import receitaModel from "../../models/receitaModel.js"
 
 const edit = async(req, res) => {
     try{
-        const id = req.params
+        const id = +req.params.id
         const receita = req.body
-        const newReceita = await receitaModel.edit(...receita, id)
+        const newReceita = await receitaModel.edit({id, ...receita})
         return res.json({
             success: 'Receita editada com sucesso!',
             receita: newReceita
