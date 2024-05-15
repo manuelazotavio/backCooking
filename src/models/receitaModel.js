@@ -33,22 +33,28 @@ const receitaSchema = z.object({
       })
       .min(3, { message: "A descrição deve ter no mínimo 3 letras." })
       .max(200, { message: "A descrição deve ter no máximo 200 caracteres." }),
-   tempo: z.string({
+      tempo: z.string({
         required_error: "Tempo é obrigatório."
-      }).min(3, { message: "O tempo deve ter no mínimo 3 caracteres." }).max(30, { message: "O tempo deve ter no máximo 30 caracteres." }).or(z.number({
+      }).min(3, { message: "O tempo deve ter no mínimo 3 caracteres." })
+        .max(30, { message: "O tempo deve ter no máximo 30 caracteres." })
+        .or(z.number({
         required_error: "Tempo é obrigatório."
-      })).min(3, { message: "O tempo deve ter no mínimo 3 caracteres." }).max(30, { message: "O tempo deve ter no máximo 30 caracteres." }),
+      }).min(3, { message: "O tempo deve ter no mínimo 3." })
+        .max(30, { message: "O tempo deve ter no máximo 30." })),
     instrucao: z.string({
             required_error: "Instrução é obrigatória.",
             invalid_type_error: "A instrução deve ser uma string.",
           })
           .min(3, { message: "A instrução deve ter no mínimo 3 letras." })
           .max(400, { message: "A instrução deve ter no máximo 200 caracteres." }),
-    ingredientes: z.string({
-        required_error: "Ingrediente é obrigatório."
-      }).min(3, { message: "O ingrediente deve ter no mínimo 3 letras." }).max(400, { message: "O ingrediente deve ter no máximo 200 caracteres." }).or(z.number({
-        required_error: "Ingrediente é obrigatório."
-      })).min(3, { message: "O ingrediente deve ter no mínimo 3 letras." }).max(400, { message: "O ingrediente deve ter no máximo 200 caracteres." }),
+          ingredientes: z.string({
+            required_error: "Ingrediente é obrigatório."
+          }).min(3, { message: "O ingrediente deve ter no mínimo 3 caracteres." })
+            .max(400, { message: "O ingrediente deve ter no máximo 400 caracteres." })
+            .or(z.number({
+            required_error: "Ingrediente é obrigatório."
+          }).min(3, { message: "O ingrediente deve ter no mínimo 3." })
+            .max(400, { message: "O ingrediente deve ter no máximo 400." })),
 });
 
 const getAll = async () => {
