@@ -11,6 +11,7 @@ const login = async (req, res) => {
 
         // validando as entradas
         const result = userModel.validateUserToLogin({email, pass})
+        console.log(result)
         if(!result.success){
             return res.status(400).json({
                 error: `Dados de Atualização Inválido`,
