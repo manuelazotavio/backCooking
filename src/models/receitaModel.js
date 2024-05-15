@@ -19,11 +19,14 @@ const receitaSchema = z.object({
     })
     .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
     .max(200, { message: "A avaliação deve ter no máximo 2 números." }),
-  porcoes: z.string({
-    required_error: "Porção é obrigatório."
-  }).min(3, { message: "A porção deve ter no mínimo 3 caracteres." }).max(30, { message: "A porção deve ter no máximo 30 caracteres." }).or(z.number({
-    required_error: "Porção é obrigatório."
-  })).min(3, { message: "A porção deve ter no mínimo 3 caracteres." }).max(30, { message: "A porção deve ter no máximo 30 caracteres." }),
+    porcoes: z.string({
+        required_error: "Porção é obrigatório."
+      }).min(3, { message: "A porção deve ter no mínimo 3 caracteres." })
+        .max(30, { message: "A porção deve ter no máximo 30 caracteres." })
+        .or(z.number({
+        required_error: "Porção é obrigatório."
+      }).min(3, { message: "A porção deve ter no mínimo 3." })
+        .max(30, { message: "A porção deve ter no máximo 30." })),
   descricao: z.string({
         required_error: "Descrição é obrigatória.",
         invalid_type_error: "A descrição deve ser uma string.",
