@@ -17,4 +17,8 @@ const remove = async (favorito) => {
     })
 }
 
-export default {create, remove}
+const getAll = async () => {
+    return await prisma.favorito.findMany();
+  };
+
+export default {create, remove, getAll}
