@@ -1,9 +1,11 @@
-import favModel from "../../models/favModel"
+import favModel from "../../models/favModel.js"
 
 const criar = async(req, res) => {
     try{
+
         const favorito = req.body
         const newFavorito = await favModel.create(favorito)
+        console.log(favorito)
         return res.json({
             success: 'Favoritado com sucesso!',
             favorito: newFavorito
