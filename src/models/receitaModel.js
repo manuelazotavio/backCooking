@@ -18,7 +18,7 @@ const receitaSchema = z.object({
       required_error: "Avaliação é obrigatório."
     })
     .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
-    .max(200, { message: "A avaliação deve ter no máximo 2 números." }),
+    .max(2, { message: "A avaliação deve ter no máximo 2 números." }),
     porcoes: z.string({
         required_error: "Porção é obrigatório."
       }).min(3, { message: "A porção deve ter no mínimo 3 caracteres." })

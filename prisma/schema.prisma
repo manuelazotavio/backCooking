@@ -20,7 +20,7 @@ model user {
 model receita {
   id          Int        @id @default(autoincrement())
   name        String     @db.VarChar(250)
-  avaliacao   String
+  avaliacao   Int
   porcoes     String 
   descricao   String
   tempo       String     @db.VarChar(50)
