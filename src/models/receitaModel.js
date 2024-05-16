@@ -22,11 +22,7 @@ const receitaSchema = z.object({
     porcoes: z.string({
         required_error: "Porção é obrigatório."
       }).min(3, { message: "A porção deve ter no mínimo 3 caracteres." })
-        .max(30, { message: "A porção deve ter no máximo 30 caracteres." })
-        .or(z.number({
-        required_error: "Porção é obrigatório."
-      }).min(3, { message: "A porção deve ter no mínimo 3." })
-        .max(30, { message: "A porção deve ter no máximo 30." })),
+        .max(30, { message: "A porção deve ter no máximo 30 caracteres." }),
   descricao: z.string({
         required_error: "Descrição é obrigatória.",
         invalid_type_error: "A descrição deve ser uma string.",
@@ -36,11 +32,7 @@ const receitaSchema = z.object({
       tempo: z.string({
         required_error: "Tempo é obrigatório."
       }).min(3, { message: "O tempo deve ter no mínimo 3 caracteres." })
-        .max(30, { message: "O tempo deve ter no máximo 30 caracteres." })
-        .or(z.number({
-        required_error: "Tempo é obrigatório."
-      }).min(3, { message: "O tempo deve ter no mínimo 3." })
-        .max(30, { message: "O tempo deve ter no máximo 30." })),
+        .max(30, { message: "O tempo deve ter no máximo 30 caracteres." }),
     instrucao: z.string({
             required_error: "Instrução é obrigatória.",
             invalid_type_error: "A instrução deve ser uma string.",
@@ -51,10 +43,7 @@ const receitaSchema = z.object({
             required_error: "Ingrediente é obrigatório."
           }).min(3, { message: "O ingrediente deve ter no mínimo 3 caracteres." })
             .max(400, { message: "O ingrediente deve ter no máximo 400 caracteres." })
-            .or(z.number({
-            required_error: "Ingrediente é obrigatório."
-          }).min(3, { message: "O ingrediente deve ter no mínimo 3." })
-            .max(400, { message: "O ingrediente deve ter no máximo 400." })),
+  
 });
 
 const getAll = async () => {
