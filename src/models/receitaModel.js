@@ -18,7 +18,7 @@ const receitaSchema = z.object({
       required_error: "Avaliação é obrigatório."
     })
     .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
-    .max(2, { message: "A avaliação deve ter no máximo 2 números." }),
+    .max(20, { message: "A avaliação deve ter no máximo 2 números." }),
     porcoes: z.union([z.string(), z.number()]).refine(value => {
       if (typeof value === 'string') {
         return value.length >= 3 && value.length <= 30;
@@ -36,9 +36,9 @@ const receitaSchema = z.object({
       .max(200, { message: "A descrição deve ter no máximo 200 caracteres." }),
       tempo: z.union([z.string(), z.number()]).refine(value => {
         if (typeof value === 'string') {
-          return value.length >= 3 && value.length <= 30;
+          return value.length >= 1 && value.length <= 30;
         } else if (typeof value === 'number') {
-          return value >= 3 && value <= 30;
+          return value >= 1 && value <= 30;
         }
       }, {
         message: "O tempo deve ter no mínimo 3 caracteres e no máximo 30 caracteres."
