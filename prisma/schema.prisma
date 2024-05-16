@@ -14,7 +14,6 @@ model user {
   pass      String     @db.Text
   avatar    String     @db.Text
   sessions  session[]
-  favoritos favorito[]
 }
 
 model receita {
@@ -31,12 +30,8 @@ model receita {
 
 model favorito {
   id        Int      @id @default(autoincrement())
-  userId    Int
   receitaId Int
-  createdAt DateTime @default(now())
-  user      user     @relation(fields: [userId], references: [id])
   receita   receita  @relation(fields: [receitaId], references: [id])
-  @@index([userId], name: "favoritoUserId")
   @@index([receitaId], name: "receitaId")
 }
 
