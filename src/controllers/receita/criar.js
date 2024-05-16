@@ -1,9 +1,17 @@
+import zodErrorFormat from "../../helpers/zodErrorFormat.js"
 import receitaModel from "../../models/receitaModel.js"
 
 const criar = async(req, res) => {
     try{
         const receita = req.body
-        const newReceita = await receitaModel.create(receita)
+        const result = receitaModel.validateReceitaToCreate(receita)
+        if(!result.success) {
+            return res.status(400).json({
+                error: "Dados inválidos.",
+                fields: zodErrorFormat(result.error)
+            })
+        }
+        const newReceita = await receitaModel.create(result.data)
         return res.json({
             success: 'Receita fabricada com sucesso!',
             receita: newReceita

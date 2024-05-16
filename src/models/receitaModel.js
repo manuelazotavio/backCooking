@@ -46,6 +46,16 @@ const receitaSchema = z.object({
   
 });
 
+const validateReceitaToCreate = (receita) => {
+  const partialReceitaSchema = receitaSchema.partial({id: true})
+  return partialReceitaSchema.safeParse(receita)
+}
+
+const validateReceitaToUpdate = (receita) => {
+  const partialReceitaSchema = receitaSchema.partial({pass: true})
+  return partialReceitaSchema.safeParse(receita)
+}
+
 const getAll = async () => {
   return await prisma.receita.findMany();
 };
@@ -61,6 +71,18 @@ const getById = async (id) => {
 const create = async (receita) => {
   return await prisma.receita.create({
     data: receita,
+    select: {
+      id: true,
+      name: true,
+      avaliacao: true,
+      porcoes: true,
+      ingredientes: true,
+      instrucao: true,
+      descricao: true,
+      tempo: true,
+      favoritos: true
+
+  }
   });
 };
 
@@ -81,4 +103,4 @@ const edit = async (receita) => {
   });
 };
 
-export default { getAll, getById, create, remove, edit };
+export default { getAll, getById, create, remove, edit, validateReceitaToCreate, validateReceitaToUpdate };
