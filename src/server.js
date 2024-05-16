@@ -5,7 +5,7 @@ import userRouter from './routers/userRouter.js'
 import receitaRouter from './routers/receitaRouter.js'
 import authRouter from './routers/authRouter.js'
 import logger from './middlewares/logger.js'
-import favRouter from './routers/authRouter.js'
+import favRouter from './routers/favRouter.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
