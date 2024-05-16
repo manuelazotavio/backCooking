@@ -1,12 +1,12 @@
-import receitaModel from "../../models/receitaModel.js"
+import favModel from "../../models/favModel"
 
 const criar = async(req, res) => {
     try{
-        const receita = req.body
-        const newReceita = await receitaModel.create(receita)
+        const favorito = req.body
+        const newFavorito = await favModel.create(favorito)
         return res.json({
-            success: 'Receita fabricada com sucesso!',
-            receita: newReceita
+            success: 'Favoritado com sucesso!',
+            favorito: newFavorito
         })
         
     } catch (error) {

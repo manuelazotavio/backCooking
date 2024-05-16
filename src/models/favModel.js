@@ -9,31 +9,12 @@ const create = async (favorito) => {
     })
 }
 
-const remove = async (userId, token) => {
-    return await prisma.session.delete({
+const remove = async (favorito) => {
+    return await prisma.favorito.delete({
         where: {
-            userId,
-            token
+            id
         }
     })
 }
 
-const getByToken = async (token) => {
-    return await prisma.session.findUnique({
-        where: {
-            token
-        }
-    })
-}
-
-const edit = async (session) => {
-    return await prisma.session.update({
-        where: {
-            id: session.id
-        },
-        data: session
-    })
-}
-
-
-export default {create, remove, edit, getByToken}
+export default {create, remove}
