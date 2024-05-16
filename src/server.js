@@ -13,7 +13,7 @@ const app = express()
 
 app.use(cookieParser())
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8081', ],
+  origin: ['http://localhost:3000', 'http://localhost:8081', 'http://localhost:8082' ],
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }))
