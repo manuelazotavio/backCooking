@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/', listar)
 router.delete('/:id', remove)
 router.post('/', criar)
-router.get('/favorito/:userId/:receitaId', getById);
+router.get('/:userId/:receitaId', getById);
 
 export default router
 
