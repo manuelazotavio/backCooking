@@ -14,7 +14,9 @@ model user {
   pass      String     @db.Text
   avatar    String     @db.Text
   sessions  session[]
+  receita   receita[]
   favoritos   favorito[]
+  
 }
 
 model receita {
@@ -22,10 +24,13 @@ model receita {
   name        String     @db.VarChar(250)
   avaliacao   Int
   porcoes     String 
+  userId    Int
   descricao   String
   tempo       String     @db.VarChar(50)
   instrucao   String     @db.VarChar(400)
   ingredientes String    @db.VarChar(250)
+  @@index([userId], name: "idUser")
+  user     user     @relation(fields: [userId], references: [id], onDelete: Cascade)
   favoritos   favorito[]
 }
 
