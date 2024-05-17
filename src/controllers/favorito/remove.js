@@ -2,7 +2,7 @@ import favModel from "../../models/favModel.js"
 
 const remove = async (req, res) => {
     try{
-        const id = req.params.id
+        const id = +req.params.id
         const result = await favModel.remove(+id)
         res.json({
             success: `Favorito ${id} apagado com sucesso!`,

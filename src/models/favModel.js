@@ -20,7 +20,7 @@ const create = async (favorito) => {
     })
 }
 
-const remove = async (favorito) => {
+const remove = async (id) => {
     return await prisma.favorito.delete({
         where: {
             id
