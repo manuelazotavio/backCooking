@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "generate": "prisma db push --force-reset",
+    "generate": "npx prisma generate",
     "pull": "npx prisma db pull",
     "push": "npx prisma db push"
   },

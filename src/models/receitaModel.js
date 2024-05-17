@@ -97,7 +97,8 @@ const create = async (receita) => {
       instrucao: true,
       descricao: true,
       tempo: true,
-      favoritos: true
+      favoritos: true,
+      userId: true
 
   }
   });
