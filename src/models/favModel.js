@@ -20,6 +20,16 @@ const create = async (favorito) => {
     })
 }
 
+const getFavorito = async (userId, receitaId) => {
+    return await prisma.favorito.findUnique({
+        where: {
+            userId: parseInt(userId),
+            receitaId: parseInt(receitaId),
+        },
+    });
+};
+
+
 const remove = async (id) => {
     return await prisma.favorito.delete({
         where: {
@@ -32,4 +42,4 @@ const getAll = async () => {
     return await prisma.favorito.findMany();
   };
 
-export default {create, remove, getAll}
+export default {create, remove, getAll, getFavorito}
