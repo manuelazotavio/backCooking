@@ -23,8 +23,8 @@ const create = async (favorito) => {
 const getFavorito = async (userId, receitaId) => {
     return await prisma.favorito.findUnique({
         where: {
-            userId: parseInt(userId),
-            receitaId: parseInt(receitaId),
+            userId,
+            receitaId
         },
     });
 };
