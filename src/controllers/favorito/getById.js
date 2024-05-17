@@ -2,7 +2,7 @@ import favModel from "../../models/favModel.js"
 
 const getById = async(req, res) => {
     try{
-        const { userId, receitaId } = req.params;
+        const { userId, receitaId } = +req.params;
         const favorito = await favModel.getFavorito(userId, receitaId);
         return res.json({
             success: 'Favorito listado com sucesso!',
