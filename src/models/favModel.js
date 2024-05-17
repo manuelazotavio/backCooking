@@ -30,10 +30,11 @@ const getFavorito = async (userId, receitaId) => {
 };
 
 
-const remove = async (id) => {
+const remove = async (userId, receitaId) => {
     return await prisma.favorito.delete({
         where: {
-            id
+            userId, 
+            receitaId
         }
     })
 }

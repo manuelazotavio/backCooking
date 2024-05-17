@@ -2,6 +2,7 @@ import receitaModel from "../../models/receitaModel.js"
 
 const remove = async (req, res) => {
     try{
+       
         const id = req.params.id
         const result = await receitaModel.remove(+id)
         res.json({
