@@ -2,18 +2,12 @@ import favModel from "../../models/favModel.js"
 
 const criar = async(req, res) => {
     try{
-
-        const { receitaId } = req.body
+        const { receitaId, userId } = req.body
         const newFavorito = await favModel.create({
-            data: {
-                receita: {
-                    connect: {
-                        id: receitaId
-                    }
-                }
-            }
+            receitaId: receitaId,
+            userId: userId
         })
-        console.log(favorito)
+        console.log(newFavorito)
         return res.json({
             success: 'Favoritado com sucesso!',
             favorito: newFavorito

@@ -5,7 +5,18 @@ const prisma = new PrismaClient()
 const create = async (favorito) => {
     console.log(favorito)
     return await prisma.favorito.create({
-        data: favorito
+        data: {
+            receita: {
+                connect: {
+                    id: favorito.receitaId
+                }
+            },
+            user: {
+                connect: {
+                    id: favorito.userId
+                }
+            }
+        }
     })
 }
 
