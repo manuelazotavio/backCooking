@@ -8,6 +8,10 @@ const receitaSchema = z.object({
     required_error: "ID é obrigatório.",
     invalid_type_error: "O ID deve ser um número inteiro.",
   }),
+  userId: z.number({
+    required_error: "UserID é obrigatório.",
+    invalid_type_error: "O ID deve ser um número inteiro.",
+  }),
   name: z.string({
       required_error: "Nome é obrigatório.",
       invalid_type_error: "O nome deve ser uma string.",
@@ -69,7 +73,7 @@ const validateReceitaToCreate = (receita) => {
 }
 
 const validateReceitaToUpdate = (receita) => {
-  const partialReceitaSchema = receitaSchema.partial({pass: true})
+  const partialReceitaSchema = receitaSchema.partial({pass: true, userId: true})
   return partialReceitaSchema.safeParse(receita)
 }
 

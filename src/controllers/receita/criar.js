@@ -11,7 +11,7 @@ const criar = async(req, res) => {
                 fields: zodErrorFormat(result.error)
             })
         }
-        const newReceita = await receitaModel.create({...result.data, userId: receita.userId})
+        const newReceita = await receitaModel.create(result.data)
         return res.json({
             success: 'Receita fabricada com sucesso!',
             receita: newReceita
