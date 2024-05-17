@@ -21,7 +21,7 @@ const create = async (favorito) => {
 }
 
 const getFavorito = async (userId, receitaId) => {
-    return await prisma.favorito.findUnique({
+    return await prisma.favorito.findFirst({
         where: {
             userId,
             receitaId
