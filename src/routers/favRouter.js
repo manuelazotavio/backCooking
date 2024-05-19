@@ -13,7 +13,7 @@ router.get('/', auth, listar)
 router.delete('/', auth, remove)
 router.post('/', auth, criar)
 router.get('/:userId/:receitaId', auth, getById);
-router.delete('/', removeAll)
+router.delete('/todos', removeAll)
 
 export default router
 
