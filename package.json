@@ -8,7 +8,7 @@
     "dev": "nodemon src/server.js",
     "generate": "npx prisma generate",
     "pull": "npx prisma db pull",
-    "push": "npx prisma db push --accept-data-loss"
+    "push": "npx prisma db push"
   },
   "keywords": [
     "js",
