@@ -43,7 +43,7 @@ model favorito {
   
   @@index([receitaId], name: "receitaId")
   @@index([userId], name: "userId")
-  @@unique([receitaId, userId], name: "unique_receitaId_userId")
+  // @@unique([receitaId, userId], name: "unique_receitaId_userId")
 }
 
 model session {
