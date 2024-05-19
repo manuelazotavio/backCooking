@@ -34,8 +34,8 @@ const remove = async (userId, receitaId) => {
     return await prisma.favorito.delete({
         where: {
             unique_receitaId_userId: {
-              receitaId: receitaId,
-              userId: userId
+              receitaId,
+              userId
             }
           }
     })
@@ -48,5 +48,5 @@ const getAll = async () => {
   const removeAll = async () => {
     return await prisma.favorito.deleteMany();
   }
-  
+
 export default {create, remove, getAll, getFavorito, removeAll}
