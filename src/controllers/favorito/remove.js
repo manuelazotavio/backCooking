@@ -4,6 +4,7 @@ const remove = async (req, res) => {
   try {
     const receitaId = +req.params.id;
     const userId = req.body
+    console.log(receitaId, userId)
     const result = await favModel.remove(receitaId, userId);
     if (result?.id) {
       res.json({
