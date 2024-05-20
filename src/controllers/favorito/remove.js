@@ -1,12 +1,12 @@
-import favModel from "../../models/favModel.js";
+import favModel from "../../models/favModel";
 
 const remove = async (req, res) => {
   try {
-    const unique_receitaId_userId = req.body;
-    const result = await favModel.remove(unique_receitaId_userId);
+    const { receitaId, userId } = req.body;
+    const result = await favModel.remove({ receitaId, userId });
     if (result?.id) {
       res.json({
-        success: `Favorito ${id} apagado com sucesso!`,
+        success: `Favorito com receitaId ${receitaId} e userId ${userId} apagado com sucesso!`,
         favorito: result,
       });
     } else {
