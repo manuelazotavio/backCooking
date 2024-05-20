@@ -1,4 +1,4 @@
-import favModel from "../../models/favModel";
+import favModel from "../../models/favModel.js";
 
 const remove = async (req, res) => {
   try {
