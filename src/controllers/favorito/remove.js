@@ -2,7 +2,7 @@ import favModel from "../../models/favModel.js";
 
 const remove = async (req, res) => {
   try {
-    const { receitaId, userId } = req.body;
+    const { userId, receitaId } = req.body.unique_receitaId_userId;
     const result = await favModel.remove({ receitaId, userId });
     if (result?.id) {
       res.json({
@@ -21,5 +21,6 @@ const remove = async (req, res) => {
     });
   }
 };
+
 
 export default remove;
