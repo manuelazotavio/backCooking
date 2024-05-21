@@ -39,7 +39,7 @@ model favorito {
   receitaId Int
   userId    Int
   receita   receita  @relation(fields: [receitaId], references: [id], onDelete: Cascade)
-  user      user     @relation(fields: [userId], references: [id])
+  user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
   @@index([receitaId], name: "receitaId")
   @@index([userId], name: "userId")
