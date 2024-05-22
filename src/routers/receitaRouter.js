@@ -9,7 +9,7 @@ import auth from '../middlewares/auth.js'
 const router = express.Router()
 
 router.get('/', auth, listar)
-router.get('/:id', auth, getById)
+router.get('/:receitaId', auth, getById)
 router.put('/:id', auth, edit)
 router.delete('/:id', auth, remove)
 router.post('/', auth, criar)
