@@ -81,10 +81,10 @@ const getAll = async () => {
   return await prisma.receita.findMany();
 };
 
-const getById = async (receitaId) => {
+const getById = async (id) => {
   return await prisma.receita.findUnique({
     where: {
-      receitaId: Number(receitaId),
+      id: Number(id),
     },
   });
 };

@@ -2,8 +2,8 @@ import receitaModel from "../../models/receitaModel.js"
 
 const getById = async (req, res) => {
     try{
-        const receitaId = Number(req.params.id) 
-        const receita = await receitaModel.getById(receitaId)
+        const id = Number(req.params.id) 
+        const receita = await receitaModel.getById(id)
         res.json({
             success: `Receita ${id} encontrada com sucesso!`, 
             receita
