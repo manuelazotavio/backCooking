@@ -41,7 +41,7 @@ const remove = async ({userId, receitaId}) => {
     })
 }
 
-const getAll = async () => {
+const getAll = async (userId) => {
     return await prisma.favorito.findMany({
         where: {
             userId
