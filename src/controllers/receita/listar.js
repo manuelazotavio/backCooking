@@ -2,7 +2,8 @@ import receitaModel from "../../models/receitaModel.js"
 
 const listar = async(req, res) => {
     try{
-        const receita = await receitaModel.getAll()
+        const userId = req.userLogged.id
+        const receita = await receitaModel.getAll(userId)
         return res.json({
             success: 'Receitas listadas com sucesso!',
             receita: receita
