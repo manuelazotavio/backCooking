@@ -2,7 +2,8 @@ import favModel from "../../models/favModel.js"
 
 const listar = async(req, res) => {
     try{
-        const favorito = await favModel.getAll()
+        const userId = req.userLogged.id
+        const favorito = await favModel.getAll(userId)
         return res.json({
             success: 'Favoritos listados com sucesso!',
             favorito

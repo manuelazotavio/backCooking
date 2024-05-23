@@ -42,7 +42,11 @@ const remove = async ({userId, receitaId}) => {
 }
 
 const getAll = async () => {
-    return await prisma.favorito.findMany();
+    return await prisma.favorito.findMany({
+        where: {
+            userId
+        }
+    });
   };
 
   const removeAll = async () => {
