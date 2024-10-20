@@ -20,7 +20,7 @@ const receitaSchema = z.object({
     .min(3, { message: "O nome deve ter no mínimo 3 letras." })
     .max(200, { message: "O nome deve ter no máximo 200 caracteres." }),
   avaliacao: z
-    .number({
+    .string({
       required_error: "Avaliação é obrigatório.",
     })
     .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
