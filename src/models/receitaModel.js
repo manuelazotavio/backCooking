@@ -95,6 +95,7 @@ const validateReceitaToUpdate = (receita) => {
   const partialReceitaSchema = receitaSchema.partial({
     pass: true,
     userId: true,
+    avaliacao: true,
   });
   return partialReceitaSchema.safeParse(receita);
 };
