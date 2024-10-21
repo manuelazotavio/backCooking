@@ -87,7 +87,7 @@ const receitaSchema = z.object({
 });
 
 const validateReceitaToCreate = (receita) => {
-  const partialReceitaSchema = receitaSchema.partial({ id: true, avaliacao: true });
+  const partialReceitaSchema = receitaSchema.partial({ id: true });
   return partialReceitaSchema.safeParse(receita);
 };
 
@@ -95,7 +95,6 @@ const validateReceitaToUpdate = (receita) => {
   const partialReceitaSchema = receitaSchema.partial({
     pass: true,
     userId: true,
-    avaliacao: true,
   });
   return partialReceitaSchema.safeParse(receita);
 };
