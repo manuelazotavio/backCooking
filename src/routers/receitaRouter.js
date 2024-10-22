@@ -5,7 +5,7 @@ import edit from '../controllers/receita/editar.js'
 import remove from '../controllers/receita/remove.js'
 import getById from '../controllers/receita/getById.js'
 import auth from '../middlewares/auth.js'
-import upload from "../../middlewares/fileUpload.js";
+import upload from "../middlewares/fileUpload.js";
 
 const router = express.Router()
 
