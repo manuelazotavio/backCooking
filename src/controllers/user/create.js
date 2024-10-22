@@ -9,7 +9,9 @@ const create = async (req, res) => {
     try{
         upload.single('avatar')
         const user = req.body
+        console.log(user)
         const foto = req.file?.path;
+        console.log(foto)
         user.avatar = foto
         const result = userModel.validateUserToCreate(user)
         if(!result.success){
