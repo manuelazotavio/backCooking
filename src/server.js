@@ -11,14 +11,16 @@ import cookieParser from 'cookie-parser'
 
 
 const app = express()
-
+app.use('/uploads', express.static('uploads'));
 
 app.use(cookieParser())
-app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8081', 'http://localhost:8082' ],
-  methods: ['POST', 'GET', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}))
+// app.use(cors({
+//   origin: ['http://localhost:3000', 'http://localhost:8081', 'http://localhost:8082' ],
+//   methods: ['POST', 'GET', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization']
+// }))
+
+app.use(cors())
 app.use(logger)
 app.use(express.json())
 
