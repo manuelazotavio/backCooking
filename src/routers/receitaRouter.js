@@ -5,14 +5,15 @@ import edit from '../controllers/receita/editar.js'
 import remove from '../controllers/receita/remove.js'
 import getById from '../controllers/receita/getById.js'
 import auth from '../middlewares/auth.js'
+import upload from "../../middlewares/fileUpload.js";
 
 const router = express.Router()
 
 router.get('/', auth, listar)
 router.get('/:id', auth, getById)
-router.put('/:id', auth, edit)
+router.put('/:id', auth, upload.single('imagem'), edit)
 router.delete('/:id', auth, remove)
-router.post('/', auth, criar)
+router.post('/', auth, upload.single('imagem'), criar)
 
 export default router
 

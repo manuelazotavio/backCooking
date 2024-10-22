@@ -1,10 +1,10 @@
 import receitaModel from "../../models/receitaModel.js"
 import fs from 'fs'
-import upload from "../../middlewares/fileUpload.js";
+
 
 const edit = async(req, res) => {
     try{
-        upload.single('imagem')
+       
         const id = +req.params.id
         const receita = req.body
         const foto = req.file?.path;

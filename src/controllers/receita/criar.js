@@ -1,11 +1,8 @@
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
 import receitaModel from "../../models/receitaModel.js"
-import fs from 'fs'
-import upload from "../../middlewares/fileUpload.js";
 
 const criar = async(req, res)  => {
     try{
-        upload.single('imagem')
         const receita = req.body
         const foto = req.file?.path;
         receita.imagem = foto

@@ -1,15 +1,16 @@
 
 import userModel from "../../models/userModel.js"
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
-import fs from 'fs'
-import upload from "../../middlewares/fileUpload.js";
 import bcrypt from 'bcrypt'
 
 const create = async (req, res) => {
-    try{
-        upload.single('avatar')
+    try{ 
+        
         const user = req.body
-        console.log(user)
+        const avatarPath = req.file?.path; 
+        if (avatarPath) {
+            user.avatar = avatarPath; 
+        }
         const result = userModel.validateUserToCreate(user)
         if(!result.success){
             return res.status(400).json({

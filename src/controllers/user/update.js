@@ -1,11 +1,8 @@
 import userModel from "../../models/userModel.js"
-
 import fs from 'fs'
-import upload from "../../middlewares/fileUpload.js";
 
 const update = async (req, res) => {
     try{ 
-        upload.single('avatar')
         const user = req.body
         user.id = +req.params.id
         const foto = req.file?.path;
