@@ -32,6 +32,7 @@
     "file-system": "^2.2.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0",
     "zod": "^3.22.5"
   },
   "devDependencies": {
