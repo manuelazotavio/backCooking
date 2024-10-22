@@ -1,6 +1,6 @@
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
 import receitaModel from "../../models/receitaModel.js"
-const fs = require('file-system')
+const fs = require('fs')
 const upload = require("../../middlewares/fileUpload.js");
 
 const criar = async(req, res)  => {

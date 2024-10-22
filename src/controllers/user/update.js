@@ -2,12 +2,27 @@ import userModel from "../../models/userModel.js"
 
 const update = async (req, res) => {
     try{ 
+        upload.single('avatar')
         const user = req.body
         user.id = +req.params.id
+        const foto = req.file?.path;
+        user.avatar = foto;
+
+        const userExistente = await prisma.user.findMany({
+            where: {
+                id: user.id,
+            }
+        });
+
+        if (foto) {
+            if (userExistente[0].avatar !== foto) {
+                fs.unlinkSync(userExistente[0].avatar);
+            }
+        }
 
         if(user.id !== req.userLogged.id){
             return res.status(401).json({
-                error: 'não autorizado a atualiar outro usuário!'
+                error: 'não autorizado a atualizar outro usuário!'
             })
         }
 
