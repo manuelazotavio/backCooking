@@ -1,7 +1,7 @@
 import userModel from "../../models/userModel.js"
 
-const fs = require('fs')
-const upload = require("../../middlewares/fileUpload.js");
+import fs from 'fs'
+import upload from "../../middlewares/fileUpload.js";
 
 const update = async (req, res) => {
     try{ 

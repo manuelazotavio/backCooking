@@ -1,5 +1,6 @@
 import receitaModel from "../../models/receitaModel.js"
-const fs = require('fs');
+import fs from 'fs'
+import upload from "../../middlewares/fileUpload.js";
 
 const remove = async (req, res) => {
     try{

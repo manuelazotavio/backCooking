@@ -1,8 +1,8 @@
 
 import userModel from "../../models/userModel.js"
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
-const fs = require('fs')
-const upload = require("../../middlewares/fileUpload.js");
+import fs from 'fs'
+import upload from "../../middlewares/fileUpload.js";
 import bcrypt from 'bcrypt'
 
 const create = async (req, res) => {

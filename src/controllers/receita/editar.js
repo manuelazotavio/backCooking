@@ -1,6 +1,6 @@
 import receitaModel from "../../models/receitaModel.js"
-const fs = require('fs')
-const upload = require("../../middlewares/fileUpload.js");
+import fs from 'fs'
+import upload from "../../middlewares/fileUpload.js";
 
 const edit = async(req, res) => {
     try{
