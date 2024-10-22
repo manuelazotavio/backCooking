@@ -12,14 +12,6 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' data:;"
-  );
-  next();
-});
-
 
 app.use(cookieParser())
 app.use(cors({
