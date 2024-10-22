@@ -9,8 +9,7 @@ datasource db {
 
 model user {
   id        Int        @id @default(autoincrement())
-  name      String     @db.VarChar(250)
-  imagem    String     
+  name      String     @db.VarChar(250)  
   email     String     @unique(map: "unique-email") @db.VarChar(250)
   pass      String     @db.Text
   avatar    String     @db.Text
@@ -24,7 +23,7 @@ model receita {
   id          Int        @id @default(autoincrement())
   name        String     @db.VarChar(250)
   avaliacao   Int
-  imagem      String
+  imagem      String @db.VarChar(400)
   porcoes     String 
   userId    Int
   descricao   String
