@@ -12,6 +12,9 @@ const receitaSchema = z.object({
     required_error: "UserID é obrigatório.",
     invalid_type_error: "O ID deve ser um número inteiro.",
   }),
+  imagem: z.string({
+    required_error: "A imagem é obrigatória.",
+    invalid_type_error: "A imagem deve ser uma string."}),
   name: z
     .string({
       required_error: "Nome é obrigatório.",
@@ -127,6 +130,7 @@ const create = async (receita) => {
       instrucao: true,
       descricao: true,
       tempo: true,
+      imagem: true,
       favoritos: true,
       userId: true,
     },
