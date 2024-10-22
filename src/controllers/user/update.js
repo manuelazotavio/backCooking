@@ -1,5 +1,8 @@
 import userModel from "../../models/userModel.js"
 
+const fs = require('fs')
+const upload = require("../../middlewares/fileUpload.js");
+
 const update = async (req, res) => {
     try{ 
         upload.single('avatar')
