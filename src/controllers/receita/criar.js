@@ -1,9 +1,14 @@
 import zodErrorFormat from "../../helpers/zodErrorFormat.js"
 import receitaModel from "../../models/receitaModel.js"
+const fs = require('file-system')
+const upload = require("../../middlewares/fileUpload.js");
 
-const criar = async(req, res) => {
+const criar = async(req, res)  => {
     try{
+        upload.single('imagem')
         const receita = req.body
+        const foto = req.file?.path;
+        receita.imagem = foto
         const result = receitaModel.validateReceitaToCreate(receita)
         if(!result.success) {
             return res.status(400).json({
