@@ -4,8 +4,11 @@ import receitaModel from "../../models/receitaModel.js"
 const criar = async(req, res)  => {
     try{
         const receita = req.body
-        const foto = req.file?.path;
+        const foto = req.file ? `/uploads/${req.file.filename}` : null;
         receita.imagem = foto
+        if (!foto) {
+            return res.status(400).json({ error: "Imagem obrigatória." });
+          }
         const result = receitaModel.validateReceitaToCreate(receita)
         if(!result.success) {
             return res.status(400).json({
