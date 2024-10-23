@@ -12,13 +12,6 @@ const app = express();
 
 app.use(logger);
 app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; img-src 'self' https://blog-static.petlove.com.br;"
-  );
-  next();
-});
 
 app.use("/uploads", express.static("uploads"));
 
