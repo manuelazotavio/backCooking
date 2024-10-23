@@ -4,26 +4,23 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
+const __dirname = path.resolve();
+const uploadDir = path.join(__dirname, 'uploads');
 
-const uploadDir = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
-
-
-// Verifica se o diretório existe e cria se não existir
+// Verifica e cria o diretório se ele não existir
 if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir);
+    fs.mkdirSync(uploadDir, { recursive: true });
 }
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
+    destination: (req, file, cb) => {
         cb(null, uploadDir);
     },
-    filename: function (req, file, cb) {
+    filename: (req, file, cb) => {
         cb(null, uuidv4() + '-' + file.originalname);
     },
 });
 
 const upload = multer({ storage: storage });
-
-console.log("passei do upload")
 
 export default upload;

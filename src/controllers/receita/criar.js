@@ -1,34 +1,41 @@
-import zodErrorFormat from "../../helpers/zodErrorFormat.js"
-import receitaModel from "../../models/receitaModel.js"
+import zodErrorFormat from "../../helpers/zodErrorFormat.js";
+import receitaModel from "../../models/receitaModel.js";
 
-const criar = async(req, res)  => {
-    try{
-        const receita = req.body
+const criar = async(req, res) => {
+    try {
+        const receita = req.body;
         const foto = req.file ? `/uploads/${req.file.filename}` : null;
-        receita.imagem = foto
+
+        // Verifica se a imagem foi enviada
         if (!foto) {
             return res.status(400).json({ error: "Imagem obrigatória." });
-          }
-        const result = receitaModel.validateReceitaToCreate(receita)
-        if(!result.success) {
+        }
+        
+        receita.imagem = foto;
+
+        // Validação da receita
+        const result = receitaModel.validateReceitaToCreate(receita);
+        if (!result.success) {
             return res.status(400).json({
                 error: "Dados inválidos.",
                 fields: zodErrorFormat(result.error)
-            })
+            });
         }
-        const newReceita = await receitaModel.create(result.data)
+
+        // Criação da receita no banco
+        const newReceita = await receitaModel.create(result.data);
+
         return res.json({
-            success: 'Receita fabricada com sucesso!',
+            success: 'Receita criada com sucesso!',
             receita: newReceita
-        })
-        
+        });
+
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return res.status(500).json({
             error: 'Ops, erro no servidor.'
-        })
+        });
     }
 }
 
-
-export default criar
+export default criar;
