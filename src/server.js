@@ -12,7 +12,7 @@ import cookieParser from 'cookie-parser'
 const app = express()
 
 app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; img-src *");
+  res.setHeader("Content-Security-Policy", "default-src *; img-src *");
   next();
 });
 
