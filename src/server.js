@@ -21,7 +21,7 @@ app.use('/uploads', express.static('uploads'));
 
 app.use(cookieParser())
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:8081', 'http://localhost:8082' ],
+  origin: ['http://localhost:3000', 'http://localhost:3002', 'http://localhost:3001', 'http://localhost:8081', 'http://localhost:8082' ],
   methods: ['POST', 'GET', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Content-Security-Policy','Authorization']
 }))
