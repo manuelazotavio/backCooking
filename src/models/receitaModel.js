@@ -119,6 +119,7 @@ const getById = async (id) => {
 };
 
 const create = async (receita) => {
+  console.log("oi")
   return await prisma.receita.create({
     data: receita,
     select: {
