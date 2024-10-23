@@ -4,9 +4,9 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
-const app = express();
 
-const uploadDir = path.join(__dirname, 'uploads');
+const uploadDir = path.join(path.dirname(new URL(import.meta.url).pathname), 'uploads');
+
 
 // Verifica se o diretório existe e cria se não existir
 if (!fs.existsSync(uploadDir)) {
