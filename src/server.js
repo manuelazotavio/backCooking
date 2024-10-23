@@ -10,6 +10,11 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 
+
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'; img-src *");
+  next();
+});
 const app = express()
 app.use('/uploads', express.static('uploads'));
 
