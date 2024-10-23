@@ -2,7 +2,7 @@ import express from 'express';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid';
 
-const app = express();
+
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
