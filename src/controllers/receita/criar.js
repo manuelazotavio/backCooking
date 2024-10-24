@@ -13,13 +13,6 @@ const criar = async(req, res) => {
         
         receita.imagem = foto;
 
-        if (req.file) {
-            // Processar o arquivo
-            res.send('Upload bem-sucedido');
-        } else {
-            res.status(400).send('Erro: Nenhum arquivo enviado ou nome do campo incorreto');
-        }
-
         // Validação da receita
         const result = receitaModel.validateReceitaToCreate(receita);
         if (!result.success) {
@@ -32,6 +25,7 @@ const criar = async(req, res) => {
         // Criação da receita no banco
         const newReceita = await receitaModel.create(result.data);
 
+        // Envia resposta de sucesso, apenas se todos os passos forem concluídos
         return res.json({
             success: 'Receita criada com sucesso!',
             receita: newReceita
