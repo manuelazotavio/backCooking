@@ -22,3 +22,5 @@ app.post("/uploadImagem", uploadUser.single('imagem'), async (req, res) => {
 
 
 });
+
+export default uploadImagem;
