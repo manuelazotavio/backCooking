@@ -7,6 +7,7 @@ const criar = async(req, res) => {
 
         // Converte userId para inteiro, se existir
         receita.userId = receita.userId ? parseInt(receita.userId, 10) : null;
+        receita.avaliacao = receita.avaliacao ? parseInt(receita.avaliacao, 10) : null;
 
         const foto = req.file ? `/uploads/${req.file.filename}` : null;
 
