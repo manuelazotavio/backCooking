@@ -4,24 +4,23 @@ import { z } from "zod";
 const prisma = new PrismaClient();
 
 const receitaSchema = z.object({
-  id: z({
+  id: z.any({
     required_error: "ID é obrigatório.",
   }),
-  userId: z({
+  userId: z.any({
     required_error: "UserID é obrigatório.",
   }),
   imagem: z.string({
     required_error: "A imagem é obrigatória.",
-    invalid_type_error: "A imagem deve ser uma string."}),
-  name: z
-    .string({
+    invalid_type_error: "A imagem deve ser uma string.",
+  }),
+  name: z.string({
       required_error: "Nome é obrigatório.",
       invalid_type_error: "O nome deve ser uma string.",
     })
     .min(3, { message: "O nome deve ter no mínimo 3 letras." })
     .max(200, { message: "O nome deve ter no máximo 200 caracteres." }),
-  avaliacao: z
-    ({
+  avaliacao: z.any({
       required_error: "Avaliação é obrigatório.",
     })
     .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
@@ -117,7 +116,6 @@ const getById = async (id) => {
 };
 
 const create = async (receita) => {
- 
   return await prisma.receita.create({
     data: receita,
     select: {
