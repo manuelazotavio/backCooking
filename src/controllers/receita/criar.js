@@ -4,6 +4,10 @@ import receitaModel from "../../models/receitaModel.js";
 const criar = async(req, res) => {
     try {
         const receita = req.body;
+
+        // Converte userId para inteiro, se existir
+        receita.userId = receita.userId ? parseInt(receita.userId, 10) : null;
+
         const foto = req.file ? `/uploads/${req.file.filename}` : null;
 
         // Verifica se a imagem foi enviada
