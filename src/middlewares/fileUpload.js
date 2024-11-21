@@ -1,6 +1,6 @@
 import multer from "multer";
 
-module.exports = (multer({
+ multer({
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
             cb(null, '../uploads/')
@@ -18,4 +18,6 @@ module.exports = (multer({
 
         return cb(null, false);
     }
-}));
+});
+
+export default fileUpload;
