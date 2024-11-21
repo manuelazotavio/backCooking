@@ -5,7 +5,7 @@ import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
 const __dirname = path.resolve();
-const uploadDir = path.join(__dirname, 'uploads');
+const uploadDir = path.join(__dirname, 'uploads/');
 
 // Verifica e cria o diretório se ele não existir
 if (!fs.existsSync(uploadDir)) {
@@ -14,8 +14,10 @@ if (!fs.existsSync(uploadDir)) {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+        console.log('Salvando arquivo no diretório:', uploadDir);
         cb(null, uploadDir);
     },
+    
     filename: (req, file, cb) => {
         cb(null, uuidv4() + '-' + file.originalname);
     },
