@@ -7,6 +7,7 @@ import logger from "./middlewares/logger.js";
 import favRouter from "./routers/favRouter.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from 'path';
 
 const app = express();
 
