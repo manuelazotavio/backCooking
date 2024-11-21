@@ -22,9 +22,7 @@ const receitaSchema = z.object({
     .max(200, { message: "O nome deve ter no máximo 200 caracteres." }),
   avaliacao: z.any({
       required_error: "Avaliação é obrigatório.",
-    })
-    .min(1, { message: "A avaliação deve ter no mínimo 1 número." })
-    .max(20, { message: "A avaliação deve ter no máximo 2 números." }),
+    }),
   porcoes: z.union([z.string(), z.number()]).refine(
     (value) => {
       if (typeof value === "string") {
