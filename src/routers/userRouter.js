@@ -6,12 +6,14 @@ import update from '../controllers/user/update.js'
 import remove from '../controllers/user/remove.js'
 import auth from '../middlewares/auth.js'
 import upload from "../middlewares/fileUpload.js";
+import uploadImagem from "../controllers/user/uploadImagem.js"
 
 const router = express.Router()
 
 router.get('/', listAll)
 router.get('/:id', getById)
 router.post('/', upload.single('avatar'), create)
+router.post('/upload', upload.single('imagem'), uploadImagem)
 router.put('/:id', auth, upload.single('avatar'), update)
 router.delete('/:id', auth, remove)
 
