@@ -1,10 +1,10 @@
 
 import express from "express"
 const app = express();
-import uploadUser from "../../middlewares/fileUpload.js"
+import upload from "../../middlewares/fileUpload.js";
 
 
-app.post("/uploadImagem", uploadUser.single('imagem'), async (req, res) => {
+app.post("/uploadImagem", upload.single('imagem'), async (req, res) => {
 
     if (req.file) {
         console.log(req.file);
