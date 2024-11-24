@@ -30,20 +30,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: storage,
-  fileFilter: function (req, file, cb) {
-      console.log("Arquivo sendo processado:", file);
-
-      // Tipos permitidos
-      const allowedTypes = ['image/jpeg', 'image/png'];
-      
-      // Verificar o mimetype diretamente
-      if (allowedTypes.includes(file.mimetype)) {
-          cb(null, true); // Arquivo permitido
-      } else {
-          cb(new Error('Apenas imagens no formato JPG ou PNG são permitidas!'));
-      }
-  },
+  storage,
 })
 
 
