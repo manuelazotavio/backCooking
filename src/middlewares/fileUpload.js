@@ -1,29 +1,54 @@
+
 import multer from "multer";
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, "../uploads/");
-    },
-    filename: (req, file, cb) => {
-      cb(null, Date.now().toString() + "_" + file.originalname);
-    },
-  }),
-  fileFilter: (req, file, cb) => {
-    const extensaoImg = ["image/png", "image/jpg", "image/jpeg"].find(
-      (formatoAceito) => formatoAceito == file.mimetype
-    );
+import path from "path";
 
-    if (extensaoImg) {
-      return cb(null, true);
+import fs from "fs";
+
+
+
+const storage = multer.diskStorage({
+
+    destination: function (req, file, cb) {
+
+        const uploadPath = path.join(__dirname, '../../uploads/');
+
+        fs.mkdirSync(uploadPath, { recursive: true });
+
+        cb(null, uploadPath);
+
+    },
+
+    filename: function (req, file, cb) {
+
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+
     }
 
-    return cb(null, false);
-  },
 });
 
-const fileUpload = upload.single('file');
 
-  
 
-export default fileUpload;
+const upload = multer({
+
+    storage: storage,
+
+    fileFilter: function (req, file, cb) {
+
+        if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
+
+            cb(null, true);
+
+        } else {
+
+            cb(new Error('Invalid file type, only JPEG and PNG is allowed!'), false);
+
+        }
+
+    }
+
+});
+
+
+
+export default upload;

@@ -1,10 +1,13 @@
 
-import express from "express"
-const app = express();
+import express from "express";
 import upload from "../../middlewares/fileUpload.js";
 
+const app = express();
 
-app.post("/uploadImagem", upload.single('imagem'), async (req, res) => {
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/upload", upload.single('imagem'), async (req, res) => {
 
     if (req.file) {
         console.log(req.file);
@@ -19,8 +22,9 @@ app.post("/uploadImagem", upload.single('imagem'), async (req, res) => {
         mensagem: "Erro: Upload não realizado com sucesso, necessário enviar uma imagem PNG ou JPG!"
     });
 
-
-
 });
 
+const uploadImagem = app;
+
 export default uploadImagem;
+
