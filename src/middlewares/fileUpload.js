@@ -33,21 +33,18 @@ const upload = multer({
   storage: storage,
   fileFilter: function (req, file, cb) {
       console.log("Arquivo sendo processado:", file);
-      
-      // Verifica as extensões permitidas
-      const filetypes = /jpeg|jpg|png/;
-      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-      
-      // Verifica o tipo MIME
-      const mimetype = file.mimetype === 'image/jpeg' || file.mimetype === 'image/png';
 
-      if (extname && mimetype) {
-          return cb(null, true); // Permite o upload
+      // Tipos permitidos
+      const allowedTypes = ['image/jpeg', 'image/png'];
+      
+      // Verificar o mimetype diretamente
+      if (allowedTypes.includes(file.mimetype)) {
+          cb(null, true); // Arquivo permitido
       } else {
-          return cb(new Error('Apenas imagens no formato JPG ou PNG são permitidas!'));
+          cb(new Error('Apenas imagens no formato JPG ou PNG são permitidas!'));
       }
   },
-});
+})
 
 
 

@@ -6,26 +6,25 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/upload", upload.single('imagem'), async (req, res) => {
-    try {
-        console.log("Recebendo requisição de upload...");
+app.post("/upload", upload.single('imagem'), (req, res) => {
+    console.log("Recebendo requisição...");
+    console.log("Headers:", req.headers);
+    console.log("Body:", req.body);
 
-        if (req.file) {
-            console.log("Arquivo recebido:", req.file);
-            console.log("Corpo da requisição:", req.body);
-            return res.json({
-                erro: false,
-                mensagem: "Upload realizado com sucesso!",
-            });
-        }
-    } catch (err) {
-        console.error("Erro no upload:", err.message);
-        return res.status(400).json({
-            erro: true,
-            mensagem: "Erro no upload: " + err.message,
+    if (req.file) {
+        console.log("Arquivo recebido:", req.file);
+        return res.json({
+            erro: false,
+            mensagem: "Upload realizado com sucesso!",
         });
     }
+
+    res.status(400).json({
+        erro: true,
+        mensagem: "Erro: Upload não realizado com sucesso.",
+    });
 });
+
 
 app.use((err, req, res, next) => {
     if (err instanceof multer.MulterError) {
