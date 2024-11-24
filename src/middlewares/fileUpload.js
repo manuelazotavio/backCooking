@@ -30,20 +30,25 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-    storage: storage,
-    fileFilter: function (req, file, cb) {
-        console.log("Arquivo sendo processado:", file);
-        const filetypes = /jpeg|jpg|png/;
-        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-        const mimetype = filetypes.test(file.mimetype);
+  storage: storage,
+  fileFilter: function (req, file, cb) {
+      console.log("Arquivo sendo processado:", file);
+      
+      // Verifica as extensões permitidas
+      const filetypes = /jpeg|jpg|png/;
+      const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+      
+      // Verifica o tipo MIME
+      const mimetype = file.mimetype === 'image/jpeg' || file.mimetype === 'image/png';
 
-        if (extname && mimetype) {
-            return cb(null, true);
-        } else {
-            cb(new Error('Apenas imagens no formato JPG ou PNG são permitidas!'));
-        }
-    },
+      if (extname && mimetype) {
+          return cb(null, true); // Permite o upload
+      } else {
+          return cb(new Error('Apenas imagens no formato JPG ou PNG são permitidas!'));
+      }
+  },
 });
+
 
 
 
