@@ -27,6 +27,23 @@ app.post("/upload", upload.single('imagem'), async (req, res) => {
     }
 });
 
+app.use((err, req, res, next) => {
+    if (err instanceof multer.MulterError) {
+        console.error("Erro do multer:", err.message);
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Erro no multer: " + err.message,
+        });
+    } else if (err) {
+        console.error("Erro desconhecido:", err.message);
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Erro desconhecido: " + err.message,
+        });
+    }
+    next();
+});
+
 
 const uploadImagem = app;
 
