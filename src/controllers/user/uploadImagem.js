@@ -8,6 +8,8 @@ app.use(express.json());
 
 app.post("/upload", upload.single('imagem'), async (req, res) => {
 
+    console.log(req.file);
+console.log(req.body);
     if (req.file) {
         console.log(req.file);
         return res.json({
