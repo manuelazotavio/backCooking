@@ -35,20 +35,6 @@ const upload = multer({
 
     storage: storage,
 
-    fileFilter: function (req, file, cb) {
-
-        if (file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
-
-            cb(null, true);
-
-        } else {
-
-            cb(new Error('Invalid file type, only JPEG and PNG is allowed!'), false);
-
-        }
-
-    }
-
 });
 
 
