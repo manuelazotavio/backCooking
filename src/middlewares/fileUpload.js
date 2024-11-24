@@ -7,7 +7,7 @@ import fs from "fs";
 
 
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname(decodeURI(new URL(import.meta.url).pathname));
 
 const storage = multer.diskStorage({
 
