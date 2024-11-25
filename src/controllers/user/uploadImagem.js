@@ -1,7 +1,7 @@
 
 import express from "express";
 import multer from "multer";
-import { storage } from '../../middlewares/fileUpload.js'
+import storage from '../../middlewares/fileUpload.js'
 
 
 const upload = multer({ storage: storage});
