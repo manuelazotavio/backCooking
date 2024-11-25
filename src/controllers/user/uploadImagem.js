@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/upload", upload.single("imagem"), (req, res) => {
+const uploadImagem = app.post("/upload", upload.single("imagem"), (req, res) => {
     if (req.file) {
         console.log("Arquivo recebido:", req.file);
         return res.json({
@@ -25,24 +25,4 @@ app.post("/upload", upload.single("imagem"), (req, res) => {
     });
 });
 
-
-app.use((err, req, res, next) => {
-    if (err instanceof multer.MulterError) {
-        console.error("Erro do multer:", err.message);
-        return res.status(400).json({
-            erro: true,
-            mensagem: "Erro no multer: " + err.message,
-        });
-    } else if (err) {
-        console.error("Erro desconhecido:", err.message);
-        return res.status(400).json({
-            erro: true,
-            mensagem: "Erro desconhecido: " + err.message,
-        });
-    }
-    next();
-});
-
-
 export default uploadImagem;
-
