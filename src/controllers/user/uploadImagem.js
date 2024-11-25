@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/upload", upload.single('imagem'), (req, res) => {
+app.post("/upload", upload.single("imagem"), (req, res) => {
     if (req.file) {
         console.log("Arquivo recebido:", req.file);
         return res.json({
