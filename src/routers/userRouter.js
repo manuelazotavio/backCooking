@@ -13,7 +13,7 @@ const router = express.Router()
 router.get('/', listAll)
 router.get('/:id', getById)
 router.post('/', upload.single('avatar'), create)
-router.post('/upload', upload.single('imagem'), uploadImagem)
+router.post('/upload', uploadImagem)
 router.put('/:id', auth, upload.single('avatar'), update)
 router.delete('/:id', auth, remove)
 

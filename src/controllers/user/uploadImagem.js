@@ -1,16 +1,17 @@
 
 import express from "express";
+import multer from "multer";
 import upload from "../../middlewares/fileUpload.js";
+import { storage } from '../../middlewares/fileUpload.js'
+
+
+const upload = multer({ storage: storage});
 
 const app = express();
 
 app.use(express.json());
 
 app.post("/upload", upload.single('imagem'), (req, res) => {
-    console.log("Recebendo requisição...");
-    console.log("Headers:", req.headers);
-    console.log("Body:", req.body);
-
     if (req.file) {
         console.log("Arquivo recebido:", req.file);
         return res.json({
@@ -43,8 +44,6 @@ app.use((err, req, res, next) => {
     next();
 });
 
-
-const uploadImagem = app;
 
 export default uploadImagem;
 
