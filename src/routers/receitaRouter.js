@@ -5,8 +5,10 @@ import edit from '../controllers/receita/editar.js';
 import remove from '../controllers/receita/remove.js';
 import getById from '../controllers/receita/getById.js';
 import auth from '../middlewares/auth.js';
-import upload from "../middlewares/fileUpload.js";
+import storage from "../middlewares/fileUpload.js";
+import multer from 'multer';
 
+const upload = multer({ storage: storage});
 const router = express.Router()
 
 router.get('/', auth, listar)
