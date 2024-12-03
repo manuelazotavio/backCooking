@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     destination: (req, file, callback) => {
         callback(null, path.resolve("uploads"));
     },
-    filename: (req, res, callback) => {
+    filename: (req, file, callback) => {
         const time = new Date().getTime();
         callback(null, `${time}_${file.originalname}`);
     },
