@@ -11,12 +11,12 @@ import uploadImagem from "../controllers/user/uploadImagem.js";
 
 const router = express.Router();
 
-const upload = multer({ storage: storage});
+const upload = multer({ storage: storage });
 
 router.get('/', listAll);
 router.get('/:id', getById);
 router.post('/', upload.single('avatar'), create);
-router.post('/upload', uploadImagem);
+router.post('/upload', upload.single('imagem'), uploadImagem); // Middleware aplicado aqui
 router.put('/:id', auth, upload.single('avatar'), update);
 router.delete('/:id', auth, remove);
 
