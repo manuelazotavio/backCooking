@@ -11,11 +11,8 @@ const edit = async(req, res) => {
         receita.imagem = foto;
 
         
-        const receitaExistente = await receitaModel.getAll({
-            where: {
-                id: receita.id
-            }
-        })
+        const receitaExistente = await receitaModel.getById();
+        
         if (foto) {
             if (receitaExistente[0].imagem !== foto) {
                 fs.unlinkSync(receitaExistente[0].imagem);

@@ -14,11 +14,7 @@ const update = async (req, res) => {
         //     }
         // });
 
-        const userExistente = await userModel.getAll({
-            where: {
-                id: user.id
-            }
-        });
+        const userExistente = await userModel.getById();
 
         if (foto) {
             if (userExistente[0].avatar !== foto) {
