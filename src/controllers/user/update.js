@@ -8,9 +8,15 @@ const update = async (req, res) => {
         const foto = req.file?.path;
         user.avatar = foto;
 
-        const userExistente = await prisma.user.findMany({
+        // const userExistente = await prisma.user.findMany({
+        //     where: {
+        //         id: user.id,
+        //     }
+        // });
+
+        const userExistente = await userModel.getAll({
             where: {
-                id: user.id,
+                id: user.id
             }
         });
 

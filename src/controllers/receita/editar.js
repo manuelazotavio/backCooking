@@ -10,12 +10,12 @@ const edit = async(req, res) => {
         const foto = req.file?.path;
         receita.imagem = foto;
 
-        const receitaExistente = await prisma.receita.findMany({
+        
+        const receitaExistente = await receitaModel.getAll({
             where: {
                 id: receita.id
             }
-        });
-
+        })
         if (foto) {
             if (receitaExistente[0].imagem !== foto) {
                 fs.unlinkSync(receitaExistente[0].imagem);
