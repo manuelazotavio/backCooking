@@ -5,7 +5,13 @@ import fs from "fs";
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     const uploadPath = path.resolve("../uploads");
-  fs.mkdir(uploadPath, {recursive: true})
+    if (!fs.existsSync(uploadPath)) {
+      try {
+        fs.mkdirSync(uploadPath, { recursive: true }); // Cria a pasta se não existir
+      } catch (err) {
+        return callback(err);
+      }
+    }
     callback(null, uploadPath);
   },
   filename: (req, file, callback) => {
