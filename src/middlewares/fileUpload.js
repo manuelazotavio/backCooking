@@ -5,8 +5,7 @@ import fs from "fs";
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     const uploadPath = path.resolve("../uploads");
-  
-        fs.mkdirSync(uploadPath, { recursive: true }); // Cria a 
+  fs.mkdir(uploadPath, {recursive: true})
     callback(null, uploadPath);
   },
   filename: (req, file, callback) => {
