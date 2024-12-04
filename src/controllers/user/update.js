@@ -8,20 +8,6 @@ const update = async (req, res) => {
         const foto = req.file?.path;
         user.avatar = foto;
 
-        // const userExistente = await prisma.user.findMany({
-        //     where: {
-        //         id: user.id,
-        //     }
-        // });
-
-        const userExistente = await userModel.getById();
-
-        if (foto) {
-            if (userExistente[0].avatar !== foto) {
-                fs.unlinkSync(userExistente[0].avatar);
-            }
-        }
-
         if(user.id !== req.userLogged.id){
             return res.status(401).json({
                 error: 'não autorizado a atualizar outro usuário!'

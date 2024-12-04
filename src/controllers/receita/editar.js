@@ -10,15 +10,6 @@ const edit = async(req, res) => {
         const foto = req.file?.path;
         receita.imagem = foto;
 
-        
-        const receitaExistente = await receitaModel.getById();
-        
-        if (foto) {
-            if (receitaExistente[0].imagem !== foto) {
-                fs.unlinkSync(receitaExistente[0].imagem);
-            }
-        }
-
 
         const newReceita = await receitaModel.edit({id, ...receita})
         return res.json({
