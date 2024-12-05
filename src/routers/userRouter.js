@@ -6,12 +6,11 @@ import update from '../controllers/user/update.js';
 import remove from '../controllers/user/remove.js';
 import multer from 'multer';
 import auth from '../middlewares/auth.js';
-import storage from '../middlewares/fileUpload.js';
 import uploadImagem from "../controllers/user/uploadImagem.js";
 
 const router = express.Router();
 
-const upload = multer({ storage: storage });
+const upload = multer();
 
 router.get('/', listAll);
 router.get('/:id', getById);
