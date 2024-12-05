@@ -8,13 +8,25 @@ import favRouter from "./routers/favRouter.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import path from 'path';
+import helmet from 'helmet';
+
+
 
 const app = express();
 
 app.use(logger);
 app.use(express.json());
 
-
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      imgSrc: ["'self'", "https://cfmnpntlrukzfdcndlwm.supabase.co"],
+      scriptSrc: ["'self'"],
+      // Adicione outras diretivas conforme necessário
+    },
+  })
+);
 app.use(cookieParser());
 app.use(
   cors({
