@@ -19,9 +19,10 @@ const fileUploadMiddleware = async (req, res, next) => {
     if (error) throw error;
 
     // Gera URL pública (caso o bucket seja público)
-    const { publicUrl } = supabase.storage
+    const { data: publicUrlData } = supabase.storage
       .from('images')
       .getPublicUrl(`uploads/${file.originalname}`);
+    const publicUrl = publicUrlData.publicUrl;
 
     req.fileUrl = publicUrl; // Salva a URL para usar depois
     next(); // Passa o controle para o próximo middleware ou rota

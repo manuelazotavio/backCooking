@@ -1,5 +1,7 @@
+
 import zodErrorFormat from "../../helpers/zodErrorFormat.js";
 import receitaModel from "../../models/receitaModel.js";
+
 
 const criar = async (req, res) => {
   try {
@@ -9,12 +11,11 @@ const criar = async (req, res) => {
     receita.userId = receita.userId ? parseInt(receita.userId, 10) : null;
     receita.avaliacao = receita.avaliacao ? parseInt(receita.avaliacao, 10) : null;
 
-    const foto = req.fileUrl; // URL da imagem enviada pelo middleware
-    receita.imagem = foto; // Atribui a URL da imagem ao objeto receita
+    receita.imagem = req.fileUrl; 
 
     // Validação da receita
     const result = receitaModel.validateReceitaToCreate(receita);
-    
+
     if (!result.success) {
       return res.status(400).json({
         error: "Dados inválidos.",
