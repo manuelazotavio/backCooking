@@ -4,7 +4,8 @@ const fileUploadMiddleware = async (req, res, next) => {
   const file = req.file; // O arquivo enviado (via multer, por exemplo)
   
   if (!file) {
-    return res.status(400).send('Nenhum arquivo enviado');
+    req.fileUrl = user.avatar;
+    next()
   }
 
   try {
