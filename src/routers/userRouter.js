@@ -10,12 +10,15 @@ import fileUploadMiddleware from '../middlewares/fileUpload.js';
 
 const router = express.Router();
 
-const upload = multer();
+const upload = multer({
+    storage: multer.memoryStorage(),
+  });
+  
 
 router.get('/', listAll);
 router.get('/:id', getById);
 router.post('/', upload.single('avatar'), fileUploadMiddleware, create);
-router.put('/:id', auth, upload.single('avatar'), fileUploadMiddleware, update)
+router.put('/:id', auth, upload.single('avatar'), fileUploadMiddleware, update);
 router.delete('/:id', auth, remove);
 
 export default router;

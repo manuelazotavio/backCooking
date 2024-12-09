@@ -8,7 +8,10 @@ import auth from '../middlewares/auth.js';
 import multer from 'multer';
 import fileUploadMiddleware from '../middlewares/fileUpload.js';
 
-const upload = multer();
+const upload = multer({
+    storage: multer.memoryStorage(),
+  });
+  
 const router = express.Router()
 
 router.get('/', auth, listar)
