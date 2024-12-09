@@ -7,10 +7,7 @@ const create = async (req, res) => {
     try{ 
         
         const user = req.body
-        const avatarPath = req.file?.path; 
-        if (avatarPath) {
-            user.avatar = avatarPath; 
-        }
+        user.avatar = req.fileUrl; 
         const result = userModel.validateUserToCreate(user)
         if(!result.success){
             return res.status(400).json({

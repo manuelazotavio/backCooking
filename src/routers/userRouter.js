@@ -6,7 +6,7 @@ import update from '../controllers/user/update.js';
 import remove from '../controllers/user/remove.js';
 import multer from 'multer';
 import auth from '../middlewares/auth.js';
-import uploadImagem from "../controllers/user/uploadImagem.js";
+import fileUploadMiddleware from '../middlewares/fileUpload.js';
 
 const router = express.Router();
 
@@ -14,9 +14,8 @@ const upload = multer();
 
 router.get('/', listAll);
 router.get('/:id', getById);
-router.post('/', upload.single('avatar'), create);
-router.post('/upload', upload.single('imagem'), uploadImagem); // Middleware aplicado aqui
-router.put('/:id', auth, upload.single('avatar'), update);
+router.post('/', upload.single('avatar'), fileUploadMiddleware, create);
+router.put('/:id', auth, upload.single('avatar'), fileUploadMiddleware, update)
 router.delete('/:id', auth, remove);
 
 export default router;
