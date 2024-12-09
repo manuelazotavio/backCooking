@@ -1,12 +1,11 @@
 import userModel from "../../models/userModel.js"
-import fs from 'fs'
+
 
 const update = async (req, res) => {
     try{ 
         const user = req.body
         user.id = +req.params.id
-        const foto = req.file?.path;
-        user.avatar = foto;
+        user.avatar = req.fileUrl; 
 
         if(user.id !== req.userLogged.id){
             return res.status(401).json({
