@@ -7,8 +7,10 @@ const edit = async(req, res) => {
        
         const id = +req.params.id
         const receita = req.body
-        const foto = req.file?.path;
-        receita.imagem = foto;
+      
+        if(req.fileUrl){
+            receita.imagem = req.fileUrl; 
+        }
 
 
         const newReceita = await receitaModel.edit({id, ...receita})
