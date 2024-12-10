@@ -1,9 +1,10 @@
 import supabase from '../helpers/configSupabase.js';
 
 const fileUploadMiddleware = async (req, res, next) => {
-  const file = req.file; // O arquivo enviado (via multer, por exemplo)
+  const file = req.file; 
   
   if (!file) {
+    req.fileUrl = req.avatar
     next()
   }
 
