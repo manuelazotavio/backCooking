@@ -4,7 +4,7 @@ const fileUploadMiddleware = async (req, res, next) => {
   const file = req.file; 
   
   if (!file) {
-    req.fileUrl = req.avatar
+    req.fileUrl = avatar
     next()
   }
 
