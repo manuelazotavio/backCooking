@@ -1,14 +1,16 @@
 import supabase from "../helpers/configSupabase.js";
 
 const fileUploadMiddleware = async (req, res, next) => {
-  const file = req.file;
+  const file = req.file; 
+  
+  if (!file) {
+      next();
+    }
 
   try {
     // Upload para o Supabase
 
-    if (!file) {
-      next();
-    }
+   
 
     const { data, error } = await supabase.storage
       .from("images") // Nome do bucket no Supabase
