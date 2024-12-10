@@ -4,9 +4,14 @@ import zodErrorFormat from '../../helpers/zodErrorFormat.js'
 
 const update = async (req, res) => {
     try{ 
+
         const user = req.body
         user.id = +req.params.id
-        user.avatar = req.fileUrl; 
+
+        if(req.fileUrl){
+            user.avatar = req.fileUrl; 
+        }
+        
 
         if(user.id !== req.userLogged.id){
             return res.status(401).json({

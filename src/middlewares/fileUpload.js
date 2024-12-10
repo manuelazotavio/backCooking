@@ -7,7 +7,6 @@ const fileUploadMiddleware = async (req, res, next) => {
     // Upload para o Supabase
 
     if (!file) {
-      req.avatar = req.fileUrl;
       next();
     }
 
