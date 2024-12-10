@@ -4,7 +4,6 @@ const fileUploadMiddleware = async (req, res, next) => {
   const file = req.file; // O arquivo enviado (via multer, por exemplo)
   
   if (!file) {
-    req.fileUrl = user.avatar;
     next()
   }
 
