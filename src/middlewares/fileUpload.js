@@ -4,7 +4,7 @@ const fileUploadMiddleware = async (req, res, next) => {
   const file = req.file; 
   
   if (!file) {
-      next();
+      return next();
     }
 
   try {
