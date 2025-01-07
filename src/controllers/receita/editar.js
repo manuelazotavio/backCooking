@@ -7,6 +7,8 @@ const edit = async(req, res) => {
        
         const id = +req.params.id
         const receita = req.body
+
+        receita.avaliacao = receita.avaliacao ? parseInt(receita.avaliacao, 10) : null;
       
         if(req.fileUrl){
             receita.imagem = req.fileUrl; 
