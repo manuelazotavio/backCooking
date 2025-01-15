@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "generate": "npx prisma generate",
     "pull": "npx prisma db pull",
-    "truncate": "node limparBanco.js --accept-data-loss",
+    "seed": "node src/helpers/seed.js",
+    "truncate": "node src/helpers/limparBanco.js",
     "push": "npx prisma db push --accept-data-loss"
   },
   "keywords": [
