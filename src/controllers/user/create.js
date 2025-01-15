@@ -10,6 +10,7 @@ const create = async (req, res) => {
         user.avatar = req.fileUrl; 
         const result = userModel.validateUserToCreate(user)
         if(!result.success){
+            console.log("to aq")
             return res.status(400).json({
                 error: `Dados de Cadastro Inválido`,
                 fields: zodErrorFormat(result.error)
