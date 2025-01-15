@@ -10,7 +10,6 @@ const create = async (req, res) => {
         user.avatar = req.fileUrl; 
         const result = userModel.validateUserToCreate(user)
         if(!result.success){
-            console.log("to aq")
             return res.status(400).json({
                 error: `Dados de Cadastro Inválido`,
                 fields: zodErrorFormat(result.error)
@@ -24,6 +23,14 @@ const create = async (req, res) => {
         })
     } catch (error) {
         console.log(error)
+        if (error.code === 'P2002') {
+            return res.status(400).json({
+                error: `O e-mail informado já está cadastrado.`,
+                fields: {
+                    email: "Este e-mail já está em uso."
+                }
+            })
+        }
         return res.status(500).json({
             error: 'Opsss erro no servidor, tente novamente!'
         })
