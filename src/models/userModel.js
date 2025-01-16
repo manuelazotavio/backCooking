@@ -77,6 +77,12 @@ const getByEmail = async (email) => {
     return await prisma.user.findUnique({
         where: {
             email
+        }, 
+        select: {
+            id: true,
+            name: true,
+            email: true,
+            avatar: true
         }
     })
 }
