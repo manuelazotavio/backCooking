@@ -128,5 +128,17 @@ const edit = async (user) => {
     })
 }
 
+const editPass = async (user) => {
+    return await prisma.user.update({
+        where: {
+            id: user.id
+        },
+        data: user,
+        select: {
+            pass: true
+        }
+    })
+}
 
-export default {getAll, getById, getByEmail, create, remove, edit, validateUserToCreate, validateUserToUpdate, validateUserToLogin}
+
+export default {getAll, getById, editPass, getByEmail, create, remove, edit, validateUserToCreate, validateUserToUpdate, validateUserToLogin}
