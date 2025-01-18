@@ -7,7 +7,7 @@ import sgMail from "@sendgrid/mail";
 sgMail.setApiKey(API_KEY);
 
 const forgotPassword = async (req, res) => {
-  const { email } = req.body;
+  const email  = req.body;
 
  
   const user = await userModel.getByEmail({ email }); 
