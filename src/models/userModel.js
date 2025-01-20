@@ -82,7 +82,8 @@ const getByEmail = async (email) => {
             id: true,
             name: true,
             email: true,
-            avatar: true
+            avatar: true,
+            pass: true
         }
     })
 }

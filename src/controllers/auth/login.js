@@ -21,6 +21,8 @@ const login = async (req, res) => {
 
         //obter os dados do usuário pelo email
         const userFound = await userModel.getByEmail(email)
+        console.log(userFound)
+        
         if(!userFound){
             return res.status(401).json({
                 error: `Email ou senha inválida`
