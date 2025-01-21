@@ -8,9 +8,10 @@ sgMail.setApiKey(API_KEY);
 
 const forgotPassword = async (req, res) => {
   const email = req.body;
-
+  console.log(email)
  
-  const user = await userModel.getByEmail({ email }); 
+  const user = await userModel.getByEmail( email ); 
+  console.log(user)
   if (!user) {
     return res.status(404).json({ error: "E-mail não encontrado." });
   }
