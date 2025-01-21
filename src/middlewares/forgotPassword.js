@@ -25,7 +25,7 @@ const forgotPassword = async (req, res) => {
     to: email,
     from: "guardareceita@gmail.com",
     subject: "Recuperação de Senha",
-    html: `<p>Clique no link para redefinir sua senha: <a href="${resetLink}">Redefinir Senha</a></p>`,
+    html: `<p>Clique no link para redefinir sua senha: ${resetLink}</p>`,
   };
 
   try {
