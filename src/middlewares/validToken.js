@@ -11,7 +11,7 @@ const validToken = async (req, res) => {
       const decoded = jwt.verify(token, SECRET_KEY);
       const userId = decoded.id;
       const user = await userModel.getById(userId)
-      console.log(user)
+   
       // Atualizar a senha do usuário
       const hashedPassword = await bcrypt.hash(newPassword, 10); // Hash da senha
       await userModel.editPass(user, { pass: hashedPassword })

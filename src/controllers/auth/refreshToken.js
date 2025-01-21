@@ -16,7 +16,7 @@ const refreshToken = async (req, res) => {
         }
 
         try {
-            console.log(token, SECRET_KEY)
+         
             const {id , name} = jwt.verify(token, SECRET_KEY)
             return res.json({ message: 'Token ativo!', user: {id , name}})
         } catch (error) {
