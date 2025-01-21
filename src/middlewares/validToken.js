@@ -6,18 +6,15 @@ import bcrypt from 'bcrypt'
 const validToken = async (req, res) => {
     const { token, newPassword } = req.body;
 
-    console.log(token, newPassword)
-  
     try {
       // Verificar o token
       const decoded = jwt.verify(token, SECRET_KEY);
-      console.log(decoded)
       const userId = decoded.id;
-      console.log(userId)
-  
+      const user = await userModel.getById(userId)
+      console.log(user)
       // Atualizar a senha do usuário
       const hashedPassword = await bcrypt.hash(newPassword, 10); // Hash da senha
-      await userModel.editPass(userId, { pass: hashedPassword })
+      await userModel.editPass(user, { pass: hashedPassword })
   
       res.json({ message: "Senha redefinida com sucesso!" });
     } catch (error) {
