@@ -21,6 +21,7 @@ const validToken = async (req, res) => {
   
       res.json({ message: "Senha redefinida com sucesso!" });
     } catch (error) {
+      console.log(error)
       if (error.name === "TokenExpiredError") {
         return res.status(400).json({ error: "Token expirado." });
       }
