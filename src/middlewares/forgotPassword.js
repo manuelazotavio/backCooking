@@ -7,7 +7,7 @@ import sgMail from "@sendgrid/mail";
 sgMail.setApiKey(API_KEY);
 
 const forgotPassword = async (req, res) => {
-  const { email } = req.body;
+  const { email, platform } = req.body;
 
  
   const user = await userModel.getByEmail( email ); 
@@ -21,9 +21,9 @@ const forgotPassword = async (req, res) => {
 
   
   const BASE_URL =
-  process.env.PLATFORM === "expo"
-    ? "exp://192.168.0.125:8081/--"
-    : "https://seusite.com";
+  platform === "expo"
+  ? "exp://192.168.0.125:8081/--" 
+  : "localhost:3000"; 
 
 const resetLink = `${BASE_URL}/valid-token?token=${resetToken}`;
   const msg = {
