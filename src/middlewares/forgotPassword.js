@@ -20,7 +20,12 @@ const forgotPassword = async (req, res) => {
   const resetToken = jwt.sign({ id: user.id }, SECRET_KEY, { expiresIn: "15m" });
 
   
-  const resetLink = `exp://192.168.0.125:8081/--/valid-token?token=${resetToken}`;
+  const BASE_URL =
+  process.env.PLATFORM === "expo"
+    ? "exp://192.168.0.125:8081/--"
+    : "https://seusite.com";
+
+const resetLink = `${BASE_URL}/valid-token?token=${resetToken}`;
   const msg = {
     to: email,
     from: "guardareceita@gmail.com",
