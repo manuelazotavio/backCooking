@@ -3,10 +3,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const main = async () => {
-  // Criar usuário exemplo (caso não tenha um usuário pré-existente)
-  const userId = 21; // Ajuste conforme o userId real
-
-  // Verifica se o usuário existe antes de inserir receitas
+  
+  const userId = 2; 
   const userExists = await prisma.user.findUnique({
     where: { id: userId },
   });
