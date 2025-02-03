@@ -21,7 +21,7 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https://cfmnpntlrukzfdcndlwm.supabase.co"],
+      imgSrc: ["'self'", "https://cfmnpntlrukzfdcndlwm.supabase.co", "https://recipesblob.oetker.com.br", "https://cloudfront-us-east-1.images.arcpublishing.com", "https://moinhoglobo.com.br",],
       scriptSrc: ["'self'"],
       // Adicione outras diretivas conforme necessário
     },
