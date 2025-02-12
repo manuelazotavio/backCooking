@@ -1,16 +1,16 @@
 import favModel from "../../models/favModel.js";
 
-const criar = async (req, res) => {
+const create = async (req, res) => {
   try {
-    const { receitaId, userId } = req.body;
-    const newFavorito = await favModel.create({
-      receitaId,
+    const { recipeId, userId } = req.body;
+    const newFavorite = await favModel.create({
+      recipeId,
       userId,
     })
-    console.log(newFavorito);
+    console.log(newFavorite);
     return res.json({
       success: "Favoritado com sucesso!",
-      favorito: newFavorito,
+      favorite: newFavorite,
     });
   } catch (error) {
     console.log(error);
@@ -20,4 +20,4 @@ const criar = async (req, res) => {
   }
 };
 
-export default criar;
+export default create;

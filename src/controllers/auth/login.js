@@ -8,18 +8,16 @@ import sessionModel from '../../models/sessionModel.js'
 const login = async (req, res) => {
     try{
         const {email, pass} = req.body
-
-        // validando as entradas
         const result = userModel.validateUserToLogin({email, pass})
    
         if(!result.success){
             return res.status(400).json({
-                error: `Dados de Atualização Inválido`,
+                error: `Dados de atualização inválidos`,
                 fields: zodErrorFormat(result.error)
             })
         }
 
-        //obter os dados do usuário pelo email
+       
         const userFound = await userModel.getByEmail(email)
       
 
@@ -29,7 +27,6 @@ const login = async (req, res) => {
             })
         }
 
-        //comparar se a senha informate bate com o hash salvo
         const passIsValid = await bcrypt.compare(pass, userFound.pass)
         if(!passIsValid){
             return res.status(401).json({
@@ -37,7 +34,7 @@ const login = async (req, res) => {
             })
         }
         
-        //gerar o access token
+    
         const token = jwt.sign({ 
             id: userFound.id, 
             name: userFound.name
@@ -46,10 +43,10 @@ const login = async (req, res) => {
             expiresIn: TOKEN_EXPIRES_IN 
         })
 
-        //gerar o cookie para web (3 meses) 3 * 30 * 24 * 60 * 60 * 1000
+    
         res.cookie('token', token, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 24 * 60 * 60 * 1000 })
 
-        // fix timezone -3
+    
         let date = new Date();
         date.setHours(date.getHours() - 3)
 
@@ -58,6 +55,7 @@ const login = async (req, res) => {
             token,
             createdAt: date
         })
+        
         return res.json({
             message: "User Logado!",
             token,

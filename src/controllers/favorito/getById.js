@@ -3,12 +3,12 @@ import favModel from "../../models/favModel.js"
 const getById = async(req, res) => {
     try{
         const userId = Number(req.params.userId);
-        const receitaId = Number(req.params.receitaId);
-        const favorito = await favModel.getFavorito(userId, receitaId);
-        if (favorito?.id) {
+        const recipeId = Number(req.params.recipeId);
+        const favorite = await favModel.getFavorite(userId, recipeId);
+        if (favorite?.id) {
             return res.json({
             success: 'Favorito listado com sucesso!',
-            favorito
+            favorite
         })
     } else {
         return res.status(404).json({

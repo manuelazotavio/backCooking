@@ -15,37 +15,37 @@ model user {
   pass      String     @db.Text
   avatar    String     @db.Text
   sessions  session[]
-  receita   receita[]
-  favoritos   favorito[]
+  recipe   recipe[]
+  favorites   favorite[]
   
 }
 
-model receita {
+model recipe {
   id          Int        @id @default(autoincrement())
   name        String     @db.VarChar(250)
-  avaliacao   Int
-  imagem      String @db.VarChar(400)
-  porcoes     String 
+  rating   Int
+  image      String @db.VarChar(400)
+  portions     String 
   userId    Int
-  descricao   String
-  tempo       String     @db.VarChar(50)
-  instrucao   String     @db.VarChar(400)
-  ingredientes String    @db.VarChar(250)
+  description   String
+  time       String     @db.VarChar(50)
+  instruction   String     @db.VarChar(400)
+  ingredients String    @db.VarChar(250)
   @@index([userId], name: "idUser")
   user     user     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  favoritos   favorito[]
+  favorites   favorite[]
 }
 
-model favorito {
+model favorite {
   id        Int      @id @default(autoincrement())
-  receitaId Int
+  recipeId Int
   userId    Int
-  receita   receita  @relation(fields: [receitaId], references: [id], onDelete: Cascade)
+  recipe   recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   user      user     @relation(fields: [userId], references: [id], onDelete: Cascade)
   
-  @@index([receitaId], name: "receitaId")
+  @@index([recipeId], name: "recipeId")
   @@index([userId], name: "userId")
-  @@unique([receitaId, userId], name: "unique_receitaId_userId")
+  @@unique([recipeId, userId], name: "unique_recipeId_userId")
 }
 
 model session {

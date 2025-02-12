@@ -7,7 +7,7 @@ const removeAll = async (req, res) => {
     if (result) {
       res.json({
         success: `Favoritos apagados com sucesso!`,
-        favorito: result,
+        favorite: result,
       });
     } else {
         return res.status(404).json({

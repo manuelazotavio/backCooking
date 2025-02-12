@@ -1,12 +1,12 @@
 import favModel from "../../models/favModel.js"
 
-const listar = async(req, res) => {
+const list = async(req, res) => {
     try{
         const userId = req.userLogged.id
-        const favorito = await favModel.getAll(userId)
+        const favorite = await favModel.getAll(userId)
         return res.json({
             success: 'Favoritos listados com sucesso!',
-            favorito
+            favorite
         })
     } catch (error) {
         console.log(error)
@@ -17,4 +17,4 @@ const listar = async(req, res) => {
 }
 
 
-export default listar
+export default list
