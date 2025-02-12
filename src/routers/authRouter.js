@@ -9,7 +9,7 @@ import validToken from '../middlewares/validToken.js'
 const router = express.Router()
 
 router.post('/login', login)
-router.post('/redefinir-senha', forgotPassword)
+router.post('/forgot-password', forgotPassword)
 router.post('/verify-token', validToken)
 router.post('/logout', auth, logout)
 router.post('/refresh-token', refreshToken)

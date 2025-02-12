@@ -1,16 +1,13 @@
 import express from "express";
 import { PORT, HOST } from "../src/config.js";
 import userRouter from "./routers/userRouter.js";
-import receitaRouter from "./routers/receitaRouter.js";
+import recipeRouter from './routers/recipeRouter.js'
 import authRouter from "./routers/authRouter.js";
 import logger from "./middlewares/logger.js";
 import favRouter from "./routers/favRouter.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import path from 'path';
-import helmet from 'helmet';
-
-
+import helmet from "helmet";
 
 const app = express();
 
@@ -21,9 +18,14 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'self'"],
-      imgSrc: ["'self'", "https://cfmnpntlrukzfdcndlwm.supabase.co", "https://recipesblob.oetker.com.br", "https://cloudfront-us-east-1.images.arcpublishing.com", "https://moinhoglobo.com.br",],
+      imgSrc: [
+        "'self'",
+        "https://cfmnpntlrukzfdcndlwm.supabase.co",
+        "https://recipesblob.oetker.com.br",
+        "https://cloudfront-us-east-1.images.arcpublishing.com",
+        "https://moinhoglobo.com.br",
+      ],
       scriptSrc: ["'self'"],
-      // Adicione outras diretivas conforme necessário
     },
   })
 );
@@ -46,10 +48,9 @@ app.use(
   })
 );
 
-
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
-app.use("/recipe", receitaRouter);
+app.use("/recipe", recipeRouter);
 app.use("/favorite", favRouter);
 
 app.listen(PORT, () => {
