@@ -123,7 +123,7 @@ const remove = async (id) => {
   });
 };
 
-const edit = async (user) => {
+const update = async (user) => {
   return await prisma.user.update({
     where: {
       id: user.id,
@@ -138,7 +138,7 @@ const edit = async (user) => {
   });
 };
 
-const editPass = async (userId, newPassword) => {
+const updatePass = async (userId, newPassword) => {
   return await prisma.user.update({
     where: { id: userId },
     data: { pass: newPassword },
@@ -148,11 +148,11 @@ const editPass = async (userId, newPassword) => {
 export default {
   getAll,
   getById,
-  editPass,
+  updatePass,
   getByEmail,
   create,
   remove,
-  edit,
+  update,
   validateUserToCreate,
   validateUserToUpdate,
   validateUserToLogin,

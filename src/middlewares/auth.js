@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import { SECRET_KEY } from "../config.js";
 
 const auth = (req, res, next) => {
-  //pegar o token
+  
   let token = false;
   token = req.cookies?.token;
   token = req.headers?.authorization?.split(" ")[1];

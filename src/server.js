@@ -49,8 +49,8 @@ app.use(
 
 app.use("/auth", authRouter);
 app.use("/user", userRouter);
-app.use("/receita", receitaRouter);
-app.use("/favorito", favRouter);
+app.use("/recipe", receitaRouter);
+app.use("/favorite", favRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on ${HOST}:${PORT}`);

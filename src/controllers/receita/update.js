@@ -1,6 +1,6 @@
 import recipeModel from "../../models/recipeModel.js";
 
-const edit = async (req, res) => {
+const update = async (req, res) => {
   try {
     const id = +req.params.id;
     const recipe = req.body;
@@ -13,7 +13,7 @@ const edit = async (req, res) => {
       recipe.image = req.fileUrl;
     }
 
-    const newRecipe = await recipeModel.edit({ id, ...recipe });
+    const newRecipe = await recipeModel.update({ id, ...recipe });
     return res.json({
       success: "Receita editada com sucesso!",
       recipe: newRecipe,
@@ -26,4 +26,4 @@ const edit = async (req, res) => {
   }
 };
 
-export default edit;
+export default update;

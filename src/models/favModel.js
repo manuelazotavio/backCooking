@@ -1,56 +1,55 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
-const create = async (favorito) => {
-    console.log(favorito)
-    return await prisma.favorito.create({
-        data: {
-            receita: {
-                connect: {
-                    id: favorito.receitaId
-                }
-            },
-            user: {
-                connect: {
-                    id: favorito.userId
-                }
-            }
-        }
-    })
-}
+const create = async (favorite) => {
 
-const getFavorito = async (userId, receitaId) => {
-    return await prisma.favorito.findFirst({
-        where: {
-            userId,
-            receitaId
+  return await prisma.favorite.create({
+    data: {
+      recipe: {
+        connect: {
+          id: favorite.recipeId,
         },
-    });
+      },
+      user: {
+        connect: {
+          id: favorite.userId,
+        },
+      },
+    },
+  });
 };
 
+const getFavorite = async (userId, recipeId) => {
+  return await prisma.favorite.findFirst({
+    where: {
+      userId,
+      recipeId,
+    },
+  });
+};
 
-const remove = async ({userId, receitaId}) => {
-    return await prisma.favorito.delete({
-        where: {
-            unique_receitaId_userId: {
-                userId: Number(userId),
-                receitaId: Number(receitaId)
-            }
-        }
-    })
-}
+const remove = async ({ userId, recipeId }) => {
+  return await prisma.favorite.delete({
+    where: {
+      unique_recipeId_userId: {
+        userId: Number(userId),
+        recipeId: Number(recipeId),
+      },
+    },
+  });
+};
 
 const getAll = async (userId) => {
-    return await prisma.favorito.findMany({
-        where: {
-            userId
-        }
-    });
-  };
+  return await prisma.favorite.findMany({
+    where: {
+      userId,
+    },
+  });
+};
 
-  const removeAll = async () => {
-    return await prisma.favorito.deleteMany();
-  }
+const removeAll = async () => {
+  return await prisma.favorite.deleteMany();
+};
 
-export default {create, remove, getAll, getFavorito, removeAll}
+export default { create, remove, getAll, getFavorite, removeAll };

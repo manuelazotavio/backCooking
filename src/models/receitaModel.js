@@ -3,14 +3,14 @@ import { z } from "zod";
 
 const prisma = new PrismaClient();
 
-const receitaSchema = z.object({
+const recipeSchema = z.object({
   id: z.any({
     required_error: "ID é obrigatório.",
   }),
   userId: z.any({
     required_error: "UserID é obrigatório.",
   }),
-  imagem: z.string({
+  image: z.string({
     required_error: "A imagem é obrigatória.",
     invalid_type_error: "A imagem deve ser uma string.",
   }),
@@ -20,10 +20,10 @@ const receitaSchema = z.object({
     })
     .min(3, { message: "O nome deve ter no mínimo 3 letras." })
     .max(200, { message: "O nome deve ter no máximo 200 caracteres." }),
-  avaliacao: z.any({
+  rating: z.any({
       required_error: "Avaliação é obrigatório.",
     }),
-  porcoes: z.union([z.string(), z.number()]).refine(
+  portions: z.union([z.string(), z.number()]).refine(
     (value) => {
       if (typeof value === "string") {
         return value.length >= 3 && value.length <= 30;
@@ -36,14 +36,14 @@ const receitaSchema = z.object({
         "A porção deve ter no mínimo 3 caracteres e no máximo 30 caracteres.",
     }
   ),
-  descricao: z
+  description: z
     .string({
       required_error: "Descrição é obrigatória.",
       invalid_type_error: "A descrição deve ser uma string.",
     })
     .min(3, { message: "A descrição deve ter no mínimo 3 letras." })
     .max(200, { message: "A descrição deve ter no máximo 200 caracteres." }),
-  tempo: z.union([z.string(), z.number()]).refine(
+  time: z.union([z.string(), z.number()]).refine(
     (value) => {
       if (typeof value === "string") {
         return value.length >= 1 && value.length <= 30;
@@ -56,7 +56,7 @@ const receitaSchema = z.object({
         "O tempo deve ter no mínimo 3 caracteres e no máximo 30 caracteres.",
     }
   ),
-  instrucao: z.union([z.string(), z.number()]).refine(
+  instruction: z.union([z.string(), z.number()]).refine(
     (value) => {
       if (typeof value === "string") {
         return value.length >= 3 && value.length <= 400;
@@ -69,7 +69,7 @@ const receitaSchema = z.object({
         "A instrução deve ter no mínimo 3 caracteres e no máximo 400 caracteres.",
     }
   ),
-  ingredientes: z.union([z.string(), z.number()]).refine(
+  ingredients: z.union([z.string(), z.number()]).refine(
     (value) => {
       if (typeof value === "string") {
         return value.length >= 3 && value.length <= 400;
@@ -84,21 +84,21 @@ const receitaSchema = z.object({
   ),
 });
 
-const validateReceitaToCreate = (receita) => {
-  const partialReceitaSchema = receitaSchema.partial({ id: true });
-  return partialReceitaSchema.safeParse(receita);
+const validateRecipeToCreate = (recipe) => {
+  const partialRecipeSchema = recipeSchema.partial({ id: true });
+  return partialRecipeSchema.safeParse(recipe);
 };
 
-const validateReceitaToUpdate = (receita) => {
-  const partialReceitaSchema = receitaSchema.partial({
+const validateRecipeToUpdate = (recipe) => {
+  const partialRecipeSchema = recipeSchema.partial({
     pass: true,
     userId: true,
   });
-  return partialReceitaSchema.safeParse(receita);
+  return partialRecipeSchema.safeParse(recipe);
 };
 
 const getAll = async (userId) => {
-  return await prisma.receita.findMany({
+  return await prisma.recipe.findMany({
     where: {
       userId,
     },
@@ -106,46 +106,46 @@ const getAll = async (userId) => {
 };
 
 const getById = async (id) => {
-  return await prisma.receita.findUnique({
+  return await prisma.recipe.findUnique({
     where: {
       id,
     },
   });
 };
 
-const create = async (receita) => {
-  return await prisma.receita.create({
-    data: receita,
+const create = async (recipe) => {
+  return await prisma.recipe.create({
+    data: recipe,
     select: {
       id: true,
       name: true,
-      avaliacao: true,
-      porcoes: true,
-      ingredientes: true,
-      instrucao: true,
-      descricao: true,
-      tempo: true,
-      imagem: true,
-      favoritos: true,
+      rating: true,
+      portions: true,
+      ingredients: true,
+      instruction: true,
+      description: true,
+      time: true,
+      image: true,
+      favorites: true,
       userId: true,
     },
   });
 };
 
 const remove = async (id) => {
-  return await prisma.receita.delete({
+  return await prisma.recipe.delete({
     where: {
       id,
     },
   });
 };
 
-const edit = async (receita) => {
-  return await prisma.receita.update({
+const update = async (recipe) => {
+  return await prisma.recipe.update({
     where: {
-      id: receita.id,
+      id: recipe.id,
     },
-    data: receita,
+    data: recipe,
   });
 };
 
@@ -154,7 +154,7 @@ export default {
   getById,
   create,
   remove,
-  edit,
-  validateReceitaToCreate,
-  validateReceitaToUpdate,
+  update,
+  validateRecipeToCreate,
+  validateRecipeToUpdate,
 };
