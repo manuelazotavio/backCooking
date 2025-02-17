@@ -24,6 +24,7 @@ app.use(
         "https://recipesblob.oetker.com.br",
         "https://cloudfront-us-east-1.images.arcpublishing.com",
         "https://moinhoglobo.com.br",
+        
       ],
       scriptSrc: ["'self'"],
     },
@@ -38,6 +39,7 @@ app.use(
       "http://localhost:3001",
       "http://localhost:8081",
       "http://localhost:8082",
+      "https://guardareceita.vercel.app",
     ],
     methods: ["POST", "GET", "PUT", "DELETE"],
     allowedHeaders: [
