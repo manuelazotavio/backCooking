@@ -20,7 +20,7 @@ const forgotPassword = async (req, res) => {
   });
 
   const BASE_URL =
-    platform === "expo" ? "exp://192.168.0.125:8081/--" : "https://cookingweb-red.vercel.app";
+    platform === "expo" ? "exp://192.168.0.125:8081/--" : "https://guardareceita.vercel.app";
 
   const resetLink = `${BASE_URL}/valid-token?token=${resetToken}`;
   const msg = {
