@@ -4,8 +4,12 @@
 O **Guarda-Receita** é uma aplicação que permite aos usuários armazenar e gerenciar suas receitas culinárias. Ele conta com três interfaces principais:
 
 - **Site Público (Landing Page):** Apresenta a plataforma e permite o cadastro e login de novos usuários.
-- **Site para Usuários:** Onde os usuários podem cadastrar, editar, consultar e excluir receitas.
+- **Site para Usuários:** Onde os usuários podem cadastrar, editar, consultar e excluir receitas. 
 - **Versão Mobile:** Versão adaptada para dispositivos móveis, oferecendo a mesma funcionalidade do site.
+
+  Github versão web: https://github.com/manuelazotavio/cookingweb
+
+  Github versão mobile: https://github.com/manuelazotavio/Development
 
 ## 📐 Padrão de Projeto
 O projeto segue o padrão **MVC (Model-View-Controller)**, garantindo organização, separação de responsabilidades e escalabilidade. Além disso, foram utilizados conceitos de **Clean Architecture** e **boas práticas de desenvolvimento**, garantindo manutenção fácil e código limpo.
